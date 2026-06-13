@@ -18,6 +18,7 @@ import {
 
 import {
     doc,
+    getDoc,
     setDoc,
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
@@ -48,6 +49,9 @@ const registerBtn = document.getElementById("register-btn");
 
 const forgotPassword =
     document.getElementById("forgot-password");
+
+const googleBtn =
+    document.getElementById("google-signin-btn");    
 
 // =======================
 // Switch Tabs
@@ -453,6 +457,90 @@ forgotPassword?.addEventListener("click", async (e) => {
         }
 
         showToast(message, "error");
+
+    }
+
+});
+
+// =======================
+// Google Sign In
+// =======================
+
+const provider = new GoogleAuthProvider();
+
+googleBtn?.addEventListener("click", async () => {
+
+    try {
+
+        setLoading(googleBtn, "Signing in...");
+
+        const result = await signInWithPopup(auth, provider);
+
+        const user = result.user;
+
+        const userRef = doc(db, "users", user.uid);
+
+        const userSnap = await getDoc(userRef);
+
+        // First-time Google user
+        if (!userSnap.exists()) {
+
+            const names = (user.displayName || "").split(" ");
+
+            await setDoc(userRef, {
+
+                uid: user.uid,
+
+                firstName: names[0] || "",
+
+                lastName: names.slice(1).join(" ") || "",
+
+                fullName: user.displayName || "",
+
+                email: user.email,
+
+                phone: user.phoneNumber || "",
+
+                photoURL: user.photoURL || "",
+
+                role: "customer",
+
+                provider: "google",
+
+                createdAt: serverTimestamp()
+
+            });
+
+        }
+
+        showToast(
+            `Welcome ${user.displayName || "back"}!`,
+            "success"
+        );
+
+        // window.location.href = "index.html";
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        let message = "Google Sign-In failed.";
+
+        if (error.code === "auth/popup-closed-by-user") {
+
+            message = "Google sign-in was cancelled.";
+
+        }
+
+        showToast(message, "error");
+
+    }
+
+    finally {
+
+        resetButton(googleBtn);
 
     }
 
