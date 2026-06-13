@@ -46,6 +46,9 @@ const toast = document.getElementById("toast");
 const loginBtn = document.getElementById("login-btn");
 const registerBtn = document.getElementById("register-btn");
 
+const forgotPassword =
+    document.getElementById("forgot-password");
+
 // =======================
 // Switch Tabs
 // =======================
@@ -394,3 +397,63 @@ function resetButton(button) {
     button.innerHTML = button.dataset.originalText;
 
 }
+
+// =======================
+// Forgot Password
+// =======================
+
+forgotPassword?.addEventListener("click", async (e) => {
+
+    e.preventDefault();
+
+    const email = document
+        .getElementById("login-email")
+        .value
+        .trim();
+
+    if (!email) {
+
+        showToast(
+            "Please enter your email first.",
+            "warning"
+        );
+
+        return;
+
+    }
+
+    try {
+
+        await sendPasswordResetEmail(auth, email);
+
+        showToast(
+            "Password reset email sent.",
+            "success"
+        );
+
+    }
+
+    catch (error) {
+
+        let message =
+            "Unable to send reset email.";
+
+        switch (error.code) {
+
+            case "auth/user-not-found":
+                message =
+                    "No account found with this email.";
+                break;
+
+            case "auth/invalid-email":
+                message =
+                    "Please enter a valid email.";
+                break;
+
+        }
+
+        showToast(message, "error");
+
+    }
+
+});
