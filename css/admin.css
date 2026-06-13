@@ -305,7 +305,7 @@ html[data-page="admin"] body {
   padding-bottom: 0;
 }
 
-/* admin.css */
+/* css/admin.css */
 .orders-table tbody tr {
   opacity: 1;
   border-bottom: 1px solid rgba(255,255,255,0.06);
