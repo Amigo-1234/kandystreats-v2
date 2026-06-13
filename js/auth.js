@@ -41,6 +41,8 @@ const subtitle = document.getElementById("auth-subtitle");
 // Password Toggle Buttons
 const passwordToggles = document.querySelectorAll(".password-toggle");
 
+const toast = document.getElementById("toast");
+
 // =======================
 // Switch Tabs
 // =======================
@@ -201,9 +203,10 @@ registerForm?.addEventListener("submit", async (e) => {
 
         registerForm.reset();
 
-        alert(
-            "Account created successfully 🎉\n\nPlease verify your email."
-        );
+        showToast(
+        "Account created successfully! Check your email.",
+        "success"
+);
 
     }
 
@@ -231,7 +234,7 @@ registerForm?.addEventListener("submit", async (e) => {
 
     }
 
-    alert(message);
+    showToast(message,"error");
 
     console.error(error);
 
@@ -275,15 +278,16 @@ loginForm?.addEventListener("submit", async (e) => {
 
             await signOut(auth);
 
-            alert(
-                "Please verify your email before signing in."
-            );
+            showToast(
+            "Please verify your email.",
+            "warning"
+);
 
             return;
 
         }
 
-        alert("Welcome back! 🎉");
+        showToast("Welcome back! 🎉");
 
         // Redirect later
         // window.location.href = "index.html";
@@ -318,10 +322,32 @@ loginForm?.addEventListener("submit", async (e) => {
 
         }
 
-        alert(message);
+        showToast(message,"error");
 
         console.error(error);
 
     }
 
 });
+
+// =======================
+// Toast Notification
+// =======================
+
+function showToast(message, type = "success") {
+
+    toast.textContent = message;
+
+    toast.className = "";
+
+    toast.classList.add(type);
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 3500);
+
+}
