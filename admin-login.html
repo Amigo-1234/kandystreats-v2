@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Login | Kandys</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- BASE STYLES -->
+  <link href="styles.css" rel="stylesheet" />
+
+  <!-- ADMIN LOGIN ONLY -->
+  <link href="admin-login.css" rel="stylesheet" />
+</head>
+
+<body class="admin-auth">
+
+  <div class="admin-auth-wrap">
+    <div class="glass-card admin-auth-card">
+
+      <h1>Kandys</h1>
+      <p class="muted">Admin Access</p>
+
+      <form id="admin-login-form" class="admin-auth-form">
+        <div class="field-group">
+          <label>Email</label>
+          <input
+            id="admin-email"
+            type="email"
+            placeholder="admin@kandys.com"
+            required
+          />
+        </div>
+
+        <div class="field-group">
+          <label>Password</label>
+          <input
+            id="admin-password"
+            type="password"
+            placeholder="••••••••"
+            required
+          />
+        </div>
+
+        <button class="btn btn-primary btn-block" type="submit">
+          Sign in
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- SAME app.js (we’ll just detect page) -->
+  <script src="js/admin-login.js" type="module"></script>
+</body>
+</html>

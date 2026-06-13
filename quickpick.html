@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" data-page="quick-picks">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quick Picks | Kandys Treats</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="admin.css" />
+
+  <style>
+    .qp-layout {
+      display: grid;
+      grid-template-columns: 2.2fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .qp-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* HEADER FORM */
+    .qp-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .qp-header input {
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #fff;
+    }
+
+    .qp-header .full {
+      grid-column: 1 / -1;
+    }
+
+    .valentine-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    /* FOOD GRID */
+    .qp-food-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 14px;
+    }
+
+    .qp-food-card {
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: 0.2s;
+    }
+
+    .qp-food-card.active {
+      border-color: #e84c88;
+      background: rgba(232,76,136,0.18);
+    }
+
+    .qp-qty {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .qp-qty button {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: none;
+      background: #e84c88;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* RIGHT PANEL */
+    .qp-summary {
+      position: sticky;
+      top: 20px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .saved-card {
+      padding: 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.06);
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body class="page page-admin">
+<div class="page-shell">
+
+<header class="section">
+  <div class="section-header inline">
+    <div>
+      <h1>Quick Picks</h1>
+      <p class="muted">Build combos visually — tap to add food</p>
+    </div>
+    <a href="menu-builder.html" class="btn btn-ghost btn-sm">← Back</a>
+  </div>
+</header>
+
+<main class="section qp-layout">
+
+  <!-- LEFT -->
+  <section class="glass-card">
+
+    <div class="qp-header">
+      <input id="qp-title" placeholder="Combo name (e.g. Valentine Lovers Pack)" />
+      <input id="qp-image" placeholder="Image URL" />
+      <input id="qp-desc" class="full" placeholder="Short description" />
+    </div>
+
+    <label class="valentine-chip">
+      <input type="checkbox" id="qp-valentine" />
+      ❤️ Valentine Special
+    </label>
+
+    <h3 style="margin-top:20px">Pick foods</h3>
+    <div id="qp-food-grid" class="qp-food-grid"></div>
+
+  </section>
+
+  <!-- RIGHT -->
+
+
+
+  <aside class="qp-summary">
+
+      <!-- Current Selection Preview -->
+<div id="qp-preview" class="qp-preview glass-card">
+  <h3>Current Pick</h3>
+
+  <div id="qp-preview-items" class="qp-preview-items">
+    <p class="muted">No items selected yet</p>
+  </div>
+
+  <div class="qp-preview-footer">
+    <span>Total</span>
+    <strong id="qp-preview-total">₦0</strong>
+  </div>
+</div>
+
+  <h3>Saved Quick Picks</h3>
+
+  <div id="qp-saved" class="qp-saved-list">
+    <!-- saved quick picks render here -->
+  </div>
+
+  <div class="qp-save-wrap">
+    <button
+      id="save-quick-pick"
+      class="btn btn-primary qp-save-btn"
+    >
+      Save Quick Pick
+    </button>
+  </div>
+
+</aside>
+
+</main>
+</div>
+
+<script src="app.js" type="module"></script>
+<script src="js/quickpicks.js" type="module"></script>
+</body>
+</html>

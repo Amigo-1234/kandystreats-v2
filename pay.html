@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" data-page="pay">
+<head>
+  <meta charset="UTF-8" />
+  <title>Complete Payment | Kandys Treats</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#e84c88">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+
+<body class="page page-pay">
+
+  <main class="pay-wrapper">
+    <section class="pay-card glass-card">
+
+      <h1 class="pay-title">Complete Payment</h1>
+
+      <div class="pay-order-box">
+        <p class="pay-order-id">
+          Order <strong id="pay-order-id">—</strong>
+        </p>
+
+        <div class="pay-amount-wrap">
+          <span class="pay-currency">₦</span>
+          <span class="pay-amount" id="pay-amount">0</span>
+        </div>
+      </div>
+
+
+      <div class="pay-buttons">
+        <button id="pay-paystack" class="btn btn-primary pay-btn">
+          Pay with Paystack
+        </button>
+
+        <button id="pay-flutterwave" class="btn btn-outline pay-btn">
+          Pay with Flutterwave
+        </button>
+      </div>
+
+      <p class="pay-note">
+        🔒 Secure payment · No card details stored
+      </p>
+
+     <button style="margin-top: 20px;" id="back-to-cart" class="btn btn-ghost">
+      ← Back to cart
+    </button>
+
+      <p id="pay-error" class="pay-error" hidden></p>
+
+    </section>
+  </main>
+
+ <!-- Paystack MUST be first and NOT deferred -->
+<script src="https://js.paystack.co/v1/inline.js"></script>
+
+<!-- Paystack handler (NON-module) -->
+<script src="paystack.js"></script>
+
+<!-- Flutterwave -->
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+
+<!-- App logic (module is fine here) -->
+<script type="module" src="pay.js"></script>
+</body>
+</html>

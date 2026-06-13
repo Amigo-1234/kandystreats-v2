@@ -1,0 +1,31 @@
+{
+  "name": "Kandy's Treats",
+  "short_name": "Kandy's",
+  "description": "Order delicious meals from Kandys Treats",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0e0e11",
+  "theme_color": "#e84c88",
+  "orientation": "portrait",
+
+  "icons": [
+    {
+      "src": "/icons/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/logo.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

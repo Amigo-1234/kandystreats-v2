@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" data-page="preview">
+<head>
+  <meta charset="UTF-8" />
+  <title>Review Orders | Kandys Treats</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#e84c88">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+
+<body class="page page-preview">
+
+<div id="announcement-bar" class="top-announcement">
+  <div class="announcement-viewport">
+    <div class="announcement-track">
+    <span class="announcement-content">Welcome to Kandys Treats 🍭</span>
+    <span class="announcement-content">Welcome to Kandys Treats 🍭</span>
+  </div>
+  </div>
+  </div>
+
+  <main class="preview-shell">
+
+    <header class="preview-header">
+      <h1>Review your orders</h1>
+      <p>You can combine multiple orders and pay once.</p>
+    </header>
+
+    <section id="draft-orders" class="draft-orders"></section>
+
+    <p id="no-drafts" class="empty-state" hidden>
+      No saved orders yet.
+    </p>
+
+    <section class="preview-summary">
+      <div class="summary-row">
+        <span>Total to pay</span>
+        <strong id="preview-total">₦0</strong>
+      </div>
+
+      <button
+        id="proceed-payment"
+        class="btn btn-primary btn-block">
+        Proceed to payment
+      </button>
+
+      <a href="cart.html" class="btn btn-outline btn-block">
+        Add more orders
+      </a>
+    </section>
+
+  </main>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>

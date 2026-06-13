@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Super Admin — Dashboard</title>
+
+  <link rel="stylesheet" href="super-admin.css" />
+</head>
+
+<body class="dashboard">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <h2>Kandys</h2>
+      <span>Super Admin</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="nav-item is-active" href="dashboard.html">Overview</a>
+      <a class="nav-item" href="transactions.html">Transactions</a>
+      <a class="nav-item" href="announcements.html">Announcements</a>
+      <a class="nav-item" href="exports.html">Exports</a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="btn btn-outline">Logout</button>
+
+      <button class="btn btn-outline"> <a href="admin.html" style="color: white; text-decoration: none;">Staff Page</a> </button>
+    </div>
+
+    
+  </aside>
+
+  <!-- MAIN -->
+  <div class="dashboard-main">
+
+    <!-- HEADER -->
+    <header class="dashboard-header">
+      <div>
+        <h1>Overview</h1>
+        <p class="muted">Owner finance & transaction control</p>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="dashboard-content">
+
+      <!-- STATS -->
+      <section class="card-grid">
+
+        <div class="card stat-card">
+          <span class="stat-label">Total Revenue</span>
+          <h2 class="stat-value" id="stat-total-revenue">—</h2>
+          <span class="stat-sub muted">All time</span>
+        </div>
+
+        <div class="card stat-card">
+          <span class="stat-label">Today</span>
+          <h2 class="stat-value" id="stat-today-revenue">—</h2>
+          <span class="stat-sub muted">Today’s sales</span>
+        </div>
+
+        <div class="card stat-card">
+          <span class="stat-label">Total Orders</span>
+          <h2 class="stat-value" id="stat-total-orders">—</h2>
+          <span class="stat-sub muted">Completed orders</span>
+        </div>
+
+        <a href="unpaid.html" class="card stat-card unpaid-link" style="text-decoration: none;" color="inherit">
+          <span class="stat-label">Unpaid</span>
+          <h2 class="stat-value danger" id="stat-unpaid">—</h2>
+          <span class="stat-sub muted">Pending payments</span>
+        </a>
+
+      </section>
+
+      <!-- LOWER SNAPSHOT -->
+      <section class="overview-lower">
+
+        <!-- SNAPSHOT -->
+        <div class="card overview-card">
+          <h3>Quick Snapshot</h3>
+          <p class="muted">
+            Quick view of today’s business activity
+          </p>
+
+          <ul class="snapshot-list">
+            <li>
+              <span>Orders Today</span>
+              <strong id="snapshot-orders-today">—</strong>
+            </li>
+            <li>
+              <span>Revenue Today</span>
+              <strong id="snapshot-revenue-today">—</strong>
+            </li>
+            <li>
+              <span>Last Order</span>
+              <strong id="snapshot-last-order">—</strong>
+            </li>
+          </ul>
+        </div>
+
+        <!-- STATUS -->
+        <div class="card overview-card">
+          <h3>Status</h3>
+          <p class="muted">System & operations health</p>
+
+          <ul class="status-list">
+            <li>
+              <span class="dot green"></span>
+              Payments running normally
+            </li>
+            <li>
+              <span class="dot green"></span>
+              Orders system active
+            </li>
+            <li>
+              <span class="dot yellow"></span>
+              Awaiting today’s orders
+            </li>
+          </ul>
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+  <!-- JS -->
+  <script type="module" src="js/dashboard.js"></script>
+  <script type="module" src="js/transactions.js"></script>
+</body>
+</html>

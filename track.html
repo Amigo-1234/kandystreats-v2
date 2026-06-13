@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" data-page="track">
+<head>
+  <meta charset="UTF-8" />
+  <title>Track Order | Kandys Treats Eatery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="styles.css" rel="stylesheet" />
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#e84c88">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+
+<body class="page page-track">
+
+ <div id="announcement-bar" class="top-announcement">
+  <div class="announcement-viewport">
+    <div class="announcement-track">
+    <span class="announcement-content">Welcome to Kandys Treats 🍭</span>
+    <span class="announcement-content">Welcome to Kandys Treats 🍭</span>
+  </div>
+  </div>
+  </div>
+
+  <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="icon-user" viewBox="0 0 24 24">
+    <path fill="currentColor"
+      d="M12 12a5 5 0 1 0-5-5a5 5 0 0 0 5 5Zm0 2c-4.4 0-8 2.3-8 5v1h16v-1c0-2.7-3.6-5-8-5Z"/>
+  </symbol>
+
+  <symbol id="icon-phone" viewBox="0 0 24 24">
+    <path fill="currentColor"
+      d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.2c1.1.4 2.3.6 3.6.6a1 1 0 0 1 1 1V21a1 1 0 0 1-1 1C10.3 22 2 13.7 2 3a1 1 0 0 1 1-1h4.5a1 1 0 0 1 1 1c0 1.3.2 2.5.6 3.6a1 1 0 0 1-.2 1Z"/>
+  </symbol>
+
+  <symbol id="icon-clock" viewBox="0 0 24 24">
+    <path fill="currentColor"
+      d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 11h5v-2h-4V6h-2v7Z"/>
+  </symbol>
+
+  <symbol id="icon-bag" viewBox="0 0 24 24">
+    <path fill="currentColor"
+      d="M6 7V6a6 6 0 1 1 12 0v1h2v15H4V7Zm2 0h8V6a4 4 0 1 0-8 0Z"/>
+  </symbol>
+</svg>
+
+  <div class="page-shell">
+
+    <!-- Header -->
+    <header class="section fade-in-up">
+      <h1>Track Your Order</h1>
+      <p class="muted">
+        Enter your order code to see live status, timeline, and price breakdown.
+      </p>
+    </header>
+
+    <main class="section section-stack fade-in-up delay-1">
+
+      <!-- TRACK CARD -->
+      <section class="glass-card track-card">
+
+        <!-- FORM -->
+        <form id="track-form" class="track-form">
+          <div class="field-group">
+            <label for="track-code">Order Code</label>
+            <input
+              id="track-code"
+              name="code"
+              placeholder="e.g. KD-8M2KZP"
+              required
+            />
+          </div>
+          <button class="btn btn-primary" type="submit" id="track-btn">
+            Track Order
+          </button>
+        </form>
+
+        <!-- LOADING -->
+        <div id="track-loading" class="track-loading" hidden>
+          <div class="loader"></div>
+          <p class="muted">Checking your order…</p>
+        </div>
+
+        <!-- ERROR -->
+        <div id="track-error" class="track-error" hidden></div>
+
+        <!-- RESULT -->
+        <div id="track-result" class="track-result" hidden>
+
+          <!-- ETA CARD (NEW) -->
+
+          <!-- ORDER HEADER -->
+          <div class="track-top">
+            <div>
+              <div class="muted">Order</div>
+              <div class="track-order-id" id="t-id">—</div>
+            </div>
+            <div class="track-status-pill" id="t-status">—</div>
+          </div>
+
+          <!-- TIMELINE -->
+<div class="timeline" id="track-steps">
+  <div class="timeline-item" data-status="New">
+    <span class="dot"></span>
+    <div>
+      <strong>Order received</strong>
+      <p>We've received your order</p>
+    </div>
+  </div>
+
+  <div class="timeline-item" data-status="Preparing">
+    <span class="dot"></span>
+    <div>
+      <strong>Preparing your order</strong>
+      <p>Your food is being prepared</p>
+    </div>
+  </div>
+
+  <div class="timeline-item" data-status="Out">
+    <span class="dot"></span>
+    <div>
+      <strong>Out for delivery</strong>
+      <p>Rider is on the way</p>
+    </div>
+  </div>
+
+  <div class="timeline-item" data-status="Completed">
+    <span class="dot"></span>
+    <div>
+      <strong>Delivered</strong>
+      <p>Order completed</p>
+    </div>
+  </div>
+</div>
+
+
+          <!-- META -->
+          <div class="track-meta grid">
+  <div class="meta-card">
+    <svg class="meta-icon"><use href="#icon-user"/></svg>
+    <span class="meta-label">Customer</span>
+    <span class="meta-value" id="t-name">—</span>
+  </div>
+
+  <div class="meta-card">
+    <svg class="meta-icon"><use href="#icon-phone"/></svg>
+    <span class="meta-label">Phone</span>
+    <span class="meta-value" id="t-phone">—</span>
+  </div>
+
+  <div class="meta-card">
+    <svg class="meta-icon"><use href="#icon-bag"/></svg>
+    <span class="meta-label">Order Type</span>
+    <span class="meta-value" id="t-type">—</span>
+  </div>
+
+  <div class="meta-card">
+    <svg class="meta-icon"><use href="#icon-clock"/></svg>
+    <span class="meta-label">Placed</span>
+    <span class="meta-value" id="t-time">—</span>
+  </div>
+</div>
+
+
+         <!-- SUPPORT -->
+<section class="track-support glass-card">
+  <p class="muted">Having issues with your order?</p>
+
+  <div class="support-actions">
+    <a
+      href="tel:+2348134641796"
+      class="btn btn-outline support-btn"
+    >
+      📞 Call us
+    </a>
+
+    <a
+      id="wa-support"
+      target="_blank"
+      class="btn btn-primary support-btn"
+    >
+      💬 Chat on WhatsApp
+    </a>
+  </div>
+</section>
+
+
+
+          <!-- ITEMS -->
+          <div class="track-items">
+            <h3>Items</h3>
+            <div id="t-items"></div>
+          </div>
+
+          <!-- SUMMARY -->
+          <div class="track-summary glass-card">
+  <div class="row">
+    <span>Subtotal</span>
+    <span id="t-subtotal">₦0</span>
+  </div>
+
+  <div class="row" id="dispatch-row" hidden>
+    <span>Dispatch</span>
+    <span id="t-dispatch">₦0</span>
+  </div>
+
+  <div class="row" id="takeaway-row" hidden>
+    <span>Takeaway Pack</span>
+    <span id="t-takeaway">₦0</span>
+  </div>
+
+  <!-- VAT will be injected here -->
+
+  <div class="row bold">
+    <span>Total</span>
+    <span id="t-total">₦0</span>
+  </div>
+</div>
+
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav glass-card">
+  <a href="home.html" class="bottom-nav-item" data-page="home">
+    <svg class="nav-icon" viewBox="0 0 24 24">
+      <path d="M3 10.5L12 3l9 7.5V21h-6v-6H9v6H3z"/>
+    </svg>
+    <span class="nav-label">Home</span>
+  </a>
+
+  <a href="menu.html" class="bottom-nav-item" data-page="menu">
+    <svg class="nav-icon" viewBox="0 0 24 24">
+      <path d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+    <span class="nav-label">Menu</span>
+  </a>
+
+  <a href="cart.html" class="bottom-nav-item" data-page="cart">
+    <svg class="nav-icon" viewBox="0 0 24 24">
+      <path d="M6 6h15l-2 9H7z"/>
+      <circle cx="9" cy="20" r="1.5"/>
+      <circle cx="18" cy="20" r="1.5"/>
+    </svg>
+    <span class="nav-label">Cart</span>
+    <span class="bottom-nav-badge js-cart-count">0</span>
+  </a>
+
+  <a href="track.html" class="bottom-nav-item" data-page="track">
+    <svg class="nav-icon" viewBox="0 0 24 24">
+      <path d="M12 21s6-5.3 6-10a6 6 0 1 0-12 0c0 4.7 6 10 6 10z"/>
+      <circle cx="12" cy="11" r="2.5"/>
+    </svg>
+    <span class="nav-label">Track</span>
+  </a>
+</nav>
+
+  <div class="toast-container" aria-live="polite" aria-atomic="true"></div>
+  <script src="app.js" type="module"></script>
+</body>
+</html>

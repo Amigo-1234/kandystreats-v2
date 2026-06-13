@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" data-page="cart">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cart & Checkout | Kandys Treats Eatery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="styles.css" rel="stylesheet" />
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#e84c88">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+</head>
+
+<div id="announcement-bar" class="top-announcement">
+  <div class="announcement-viewport">
+    <div class="announcement-track">
+    <span class="announcement-content">Welcome to Kandys Treats 🍭</span>
+    <span class="announcement-content">Welcome to Kandys Treats 🍭</span>
+  </div>
+  </div>
+  </div>
+  <div class="page-shell">
+    <header class="section fade-in-up">
+      <h1>Your Order</h1>
+      <p>Review your treats and complete your order.</p>
+    </header>
+
+    <main class="section section-stack fade-in-up delay-1">
+      <section class="glass-card cart-panel" aria-label="Cart items">
+        <div class="section-header inline">
+          <h2>Cart</h2>
+          <button class="link-inline" id="clear-cart">Clear all</button>
+        </div>
+        <div id="cart-items" class="cart-items" aria-live="polite">
+          <!-- Items injected -->
+        </div>
+        <p id="cart-empty" class="empty-state">Your cart is empty. Add something delicious from the menu.</p>
+      </section>
+
+      <section class="glass-card summary-panel" aria-label="Order summary and checkout">
+        <h2>Checkout</h2>
+        <div class="order-summary">
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="summary-subtotal">₦0</span>
+          </div>
+          <div class="summary-row" id="summary-takeaway-row" style="display:none">
+            <span>Takeaway Pack</span>
+            <span id="summary-takeaway">₦0</span>
+          </div>
+          <div class="summary-row">
+            <span>Dispatch Fee</span>
+            <span id="summary-delivery">₦800</span>
+          </div>
+
+          <div class="summary-row summary-total">
+            <span>Total</span>
+            <span id="summary-total">₦0</span>
+          </div>
+        </div>
+
+        <form id="checkout-form" class="checkout-form">
+          <div class="field-group">
+            <label for="customer-name">Full name</label>
+            <input id="customer-name" name="name" required autocomplete="name" />
+          </div>
+          <div class="field-group">
+            <label for="customer-phone">Phone number</label>
+            <input
+              id="customer-phone"
+              name="phone"
+              required
+              inputmode="tel"
+              autocomplete="tel"
+              placeholder="+234..."
+            />
+            <label for="customer-email">Email (to track your order)</label>
+              <input
+                type="email"
+                id="customer-email"
+                placeholder="Enter email to track your order"
+                required
+              />
+
+          </div>
+          <div class="field-group">
+            <label>Delivery or pickup</label>
+            <div class="toggle-group">
+              <button type="button" class="toggle-option is-active" data-fulfilment="delivery">Delivery</button>
+              <button type="button" class="toggle-option" data-fulfilment="pickup">Pickup</button>
+            </div>
+          </div>
+          <div class="field-group" id="address-field">
+            <label for="customer-address">Delivery address</label>
+            <textarea id="customer-address" name="address" rows="2" required></textarea>
+          </div>
+          <div class="field-group">
+            <label for="customer-notes">Order notes (optional)</label>
+            <textarea
+              id="customer-notes"
+              name="notes"
+              rows="2"
+              placeholder="E.g. less pepper, extra plantain, call on arrival..."
+            ></textarea>
+          </div>
+
+          <button
+            class="btn btn-primary btn-block"
+            id="save-order-btn">
+            Save this order
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-outline btn-block review-btn"
+            id="view-orders-btn">
+            Review saved orders
+            <span class="review-badge" id="review-count">0</span>
+          </button>
+        </form>
+
+
+
+        <section class="order-confirmation" id="order-confirmation" hidden>
+          <h3>Order confirmed!</h3>
+
+          <p>
+            Your order ID is <strong><span id="order-id"></span></strong>.
+          </p>
+
+          <div id="order-summary-text" class="order-summary-text"></div>
+
+          <div class="confirm-actions">
+            <a id="track-order-link" class="btn btn-outline btn-block" style="margin-top: 10px;" hidden>
+              Track this order
+            </a>
+
+            <button id="copy-order-code" type="button" class="btn btn-outline btn-block" hidden>
+              Copy order code
+            </button>
+
+            <button id="copy-tracking-link" type="button" class="btn btn-outline btn-block" hidden>
+              Copy tracking link
+            </button>
+            </div>
+          </section>
+
+      </section>
+    </main>
+  </div>
+
+  <!-- Bottom Nav -->
+  <nav class="bottom-nav glass-card">
+  <a href="home.html" class="bottom-nav-item" data-page="home">
+    <svg class="nav-icon" viewBox="0 0 24 24">
+      <path d="M3 10.5L12 3l9 7.5V21h-6v-6H9v6H3z"/>
+    </svg>
+    <span class="nav-label">Home</span>
+  </a>
+
+  <a href="menu.html" class="bottom-nav-item" data-page="menu">
+    <svg class="nav-icon" viewBox="0 0 24 24">
+      <path d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+    <span class="nav-label">Menu</span>
+  </a>
+
+  <a href="cart.html" class="bottom-nav-item" data-page="cart">
+    <svg class="nav-icon" viewBox="0 0 24 24">
+      <path d="M6 6h15l-2 9H7z"/>
+      <circle cx="9" cy="20" r="1.5"/>
+      <circle cx="18" cy="20" r="1.5"/>
+    </svg>
+    <span class="nav-label">Cart</span>
+    <span class="bottom-nav-badge js-cart-count">0</span>
+  </a>
+
+  <a href="track.html" class="bottom-nav-item" data-page="track">
+    <svg class="nav-icon" viewBox="0 0 24 24">
+      <path d="M12 21s6-5.3 6-10a6 6 0 1 0-12 0c0 4.7 6 10 6 10z"/>
+      <circle cx="12" cy="11" r="2.5"/>
+    </svg>
+    <span class="nav-label">Track</span>
+  </a>
+</nav>
+
+  <div class="toast-container" aria-live="polite" aria-atomic="true"></div>
+  <script src="app.js" type="module"></script>
+</body>
+</html>
+

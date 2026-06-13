@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" data-page="admin">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Console — Kandys Treats</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="apple-touch-icon" href="logo.png" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="admin.css" />
+
+  <meta name="theme-color" content="#e84c88" />
+</head>
+
+<body class="page page-admin">
+
+  <div class="admin-shell">
+
+    <!-- ================= TOP BAR ================= -->
+    <header class="admin-topbar glass-card">
+      <div class="topbar-left">
+        <h1>Admin Console</h1>
+        <span class="muted">Live orders & operations</span>
+      </div>
+
+      <div class="topbar-right">
+        <button id="toggle-live" class="live-indicator">
+          <span class="dot"></span>
+          <span id="live-text">Live</span>
+        </button>
+
+        <button id="toggle-sound" class="btn btn-outline btn-sm">
+          Sound: On
+        </button>
+
+        <button id="enable-notifications" class="btn btn-outline btn-sm">
+          Notifications: On
+        </button>
+
+        <button id="admin-logout" class="btn btn-outline btn-sm">
+          Sign out
+        </button>
+      </div>
+    </header>
+
+    <!-- ================= STATS ================= -->
+    <section class="admin-stats">
+      <div class="stat-card glass-card">
+        <span class="stat-label">Total Orders</span>
+        <strong id="stat-total">0</strong>
+      </div>
+
+      <div class="stat-card glass-card">
+        <span class="stat-label">New</span>
+        <strong id="stat-new">0</strong>
+      </div>
+
+      <div class="stat-card glass-card">
+        <span class="stat-label">Preparing</span>
+        <strong id="stat-preparing">0</strong>
+      </div>
+
+      <div class="stat-card glass-card">
+        <span class="stat-label">Completed</span>
+        <strong id="stat-completed">0</strong>
+      </div>
+
+      <div class="stat-card glass-card">
+        <span class="stat-label">Today Revenue</span>
+        <strong id="stat-revenue">₦0</strong>
+      </div>
+    </section>
+
+    <div class="date-filters">
+  <button class="chip is-active" data-range="today">Today</button>
+  <button class="chip" data-range="yesterday">Yesterday</button>
+  <button class="chip" data-range="7days">Last 7 days</button>
+  <button class="chip" data-range="all">All</button>
+</div>
+
+    <!-- ================= TOOLBAR ================= -->
+    <section class="admin-toolbar glass-card">
+      <input
+        id="order-search"
+        class="admin-search"
+        placeholder="Search by order ID, name, phone…"
+      />
+
+      <div class="admin-filters" id="status-filters">
+        <button class="chip is-active" data-filter="All">All</button>
+        <button class="chip" data-filter="New">New</button>
+        <button class="chip" data-filter="Preparing">Preparing</button>
+        <button class="chip" data-filter="Out">Out</button>
+        <button class="chip" data-filter="Completed">Completed</button>
+      </div>
+    </section>
+
+    <!-- ================= MAIN ================= -->
+    <main class="admin-main">
+
+      <!-- ===== ORDERS TABLE ===== -->
+      <section class="orders-panel glass-card">
+        <table class="orders-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Date</th>
+              <th>Customer</th>
+              <th>Total</th>
+              <th>Type</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="orders-tbody">
+            <!-- injected by JS -->
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ===== ORDER DETAILS ===== -->
+      <aside class="order-detail-panel glass-card" id="order-detail-panel">
+        <h3>Order Details</h3>
+        <p class="muted" id="order-detail-empty">
+          Select an order to view details.
+        </p>
+
+        <div id="order-detail-content" hidden class="order-detail-body">
+
+  <div class="detail-block">
+    <div><span>Order ID</span><strong data-detail-id></strong></div>
+    <div><span>Name</span><strong data-detail-name></strong></div>
+    <div><span>Phone</span><strong data-detail-phone></strong></div>
+    <div><span>Type</span><strong data-detail-type></strong></div>
+    <div><span>Address</span><strong data-detail-address></strong></div>
+    <div class="detail-total">
+      <span>Total</span>
+      <strong data-detail-total></strong>
+    </div>
+  </div>
+
+  <div class="detail-section">
+    <h4>Items</h4>
+    <div data-detail-items class="order-items-list"></div>
+  </div>
+
+  <div class="detail-section">
+    <h4>Status</h4>
+    <p class="current-status" id="current-status-text"></p>
+
+    <div class="status-buttons">
+      <button class="chip chip-status" data-status="New">New</button>
+      <button class="chip chip-status" data-status="Preparing">Preparing</button>
+      <button class="chip chip-status" data-status="Out">Out</button>
+      <button class="chip chip-status" data-status="Completed">Completed</button>
+    </div>
+  </div>
+
+  <button id="print-receipt" class="btn btn-primary btn-block btn-sm">
+    Print Receipt
+  </button>
+</div>
+      </aside>
+
+    </main>
+
+    <!-- ================= FOOT ACTION ================= -->
+    <div class="admin-footer">
+      <a href="menu-builder.html" class="btn btn-outline btn-sm">
+        Manage Menu →
+      </a>
+    </div>
+
+  </div>
+
+  <!-- ================= MOBILE NAV ================= -->
+  <nav class="bottom-nav glass-card">
+    <a href="home.html" class="bottom-nav-item">Home</a>
+    <a href="menu.html" class="bottom-nav-item">Menu</a>
+    <a href="cart.html" class="bottom-nav-item">
+      Cart <span class="bottom-nav-badge js-cart-count">0</span>
+    </a>
+    <a href="contact.html" class="bottom-nav-item">Contact</a>
+  </nav>
+
+  <!-- Toasts -->
+  <div class="toast-container" aria-live="polite"></div>
+
+  <!-- EmailJS stays -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    emailjs.init("b9ka2VH56jloBCl0R");
+  </script>
+
+  <!-- Admin logic (already working) -->
+  <script src="js/admin.js" type="module"></script>
+
+</body>
+</html>

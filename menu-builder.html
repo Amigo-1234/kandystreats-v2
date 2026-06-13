@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Menu Builder | Kandys Treats</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="menu-builder.css" />
+</head>
+
+<body>
+  <div class="app">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <div>
+        <h1>Menu Builder</h1>
+        <p>Manage food items, prices & availability</p>
+      </div>
+
+      <div class="top-actions">
+
+  <div class="nav-group">
+    <a href="admin.html" class="nav-btn ghost">
+      ← Admin
+    </a>
+
+    <a href="quickpick.html" class="nav-btn ghost">
+      Quick Picks →
+    </a>
+  </div>
+
+  <div class="action-group">
+    <button id="add-menu-section" class="primary-btn">
+      + Section
+    </button>
+    <button id="add-menu-item" class="outline-btn">
+      + Item
+    </button>
+  </div>
+
+</div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="layout">
+
+      <!-- SECTIONS -->
+      <aside class="sections" id="menu-sections"></aside>
+
+      <!-- ITEMS -->
+      <section class="items">
+        <h2 id="active-menu-title">Menu</h2>
+        <div id="menu-item-list" class="item-list"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="app.js" type="module"></script>
+  <script src="js/menu-builder.js" type="module"></script>
+</body>
+</html>

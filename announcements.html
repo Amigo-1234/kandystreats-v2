@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Super Admin — Announcements</title>
+  <link rel="stylesheet" href="super-admin.css" />
+</head>
+
+<body class="dashboard">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <h2>Kandys</h2>
+      <span>Super Admin</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="nav-item" href="dashboard.html">Overview</a>
+      <a class="nav-item" href="transactions.html">Transactions</a>
+      <a class="nav-item is-active" href="announcements.html">Announcements</a>
+      <a class="nav-item" href="exports.html">Exports</a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="btn btn-outline" id="logout-btn">Logout</button>
+
+      <button class="btn btn-outline"> <a href="admin.html" style="color: white; text-decoration: none;">Staff Page</a> </button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="dashboard-main">
+
+    <header class="dashboard-header">
+      <div>
+        <h1>Announcements</h1>
+        <p class="muted">Broadcast messages to customers</p>
+      </div>
+    </header>
+
+    <main class="dashboard-content">
+
+      <!-- CREATE -->
+      <div class="card announcement-create">
+        <h3>New Announcement</h3>
+
+        <textarea
+          id="announcement-input"
+          placeholder="Type announcement here…"
+          rows="3"></textarea>
+
+        <div class="actions">
+          <button class="btn btn-primary" id="publish-btn">Publish</button>
+        </div>
+      </div>
+
+      <!-- LIST -->
+      <div class="card" style="margin-top: 30px;">
+        <h3>All Announcements</h3>
+        <div class="announcement-list" id="announcement-list"></div>
+      </div>
+
+    </main>
+  </div>
+
+  <script type="module" src="js/announcements.js"></script>
+</body>
+</html>
