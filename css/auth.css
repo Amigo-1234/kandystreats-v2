@@ -8,20 +8,28 @@
     box-sizing:border-box;
 }
 
+html{
+
+background:#09040a;
+
+min-height:100%;
+
+}
+
 body{
 
 margin:0;
-
-font-family:"Outfit",sans-serif;
 
 background:
 radial-gradient(circle at top left,#71214d 0%,transparent 30%),
 radial-gradient(circle at bottom right,#ff2e93 0%,transparent 20%),
 linear-gradient(180deg,#09040a,#170311,#09040a);
 
-color:white;
+font-family:"Outfit",sans-serif;
 
-overflow-x:hidden;
+color:#fff;
+
+min-height:100%;
 
 }
 
