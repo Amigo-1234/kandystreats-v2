@@ -4,83 +4,48 @@ import {
 } from "./firebase.js";
 
 import {
-    signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithPopup,
+    sendEmailVerification,
+    sendPasswordResetEmail,
+    onAuthStateChanged,
+    signOut,
     updateProfile,
-    onAuthStateChanged
-}
-from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+    reload
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 
 import {
     doc,
     setDoc,
     serverTimestamp
-}
-from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
-// Login Form
-const form = document.getElementById("login-form");
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
-if (form) {
+// =======================
+// DOM Elements
+// =======================
 
-    form.addEventListener("submit", async (e) => {
-
-        e.preventDefault();
-
-        const email =
-            document
-            .getElementById("login-email")
-            .value
-            .trim();
-
-        const password =
-            document
-            .getElementById("login-password")
-            .value;
-
-        try {
-
-            await signInWithEmailAndPassword(
-                auth,
-                email,
-                password
-            );
-
-            alert("Login successful 🎉");
-
-            window.location.href = "profile.html";
-
-        }
-
-        catch (err) {
-
-            alert(err.message);
-
-        }
-
-    });
-
-}
-
-// Already logged in?
-onAuthStateChanged(auth, (user) => {
-
-    if (!user) return;
-
-    console.log("Logged in:", user.email);
-
-});
-
-
+// Tabs
 const loginTab = document.getElementById("login-tab");
 const registerTab = document.getElementById("register-tab");
 
+// Forms
 const loginForm = document.getElementById("login-form");
 const registerForm = document.getElementById("register-form");
 
+// Headings
 const title = document.getElementById("auth-title");
 const subtitle = document.getElementById("auth-subtitle");
 
-loginTab?.addEventListener("click", () => {
+// Password Toggle Buttons
+const passwordToggles = document.querySelectorAll(".password-toggle");
+
+// =======================
+// Switch Tabs
+// =======================
+
+loginTab.addEventListener("click", () => {
 
     loginTab.classList.add("active");
     registerTab.classList.remove("active");
@@ -95,7 +60,7 @@ loginTab?.addEventListener("click", () => {
 
 });
 
-registerTab?.addEventListener("click", () => {
+registerTab.addEventListener("click", () => {
 
     registerTab.classList.add("active");
     loginTab.classList.remove("active");
@@ -107,5 +72,256 @@ registerTab?.addEventListener("click", () => {
 
     subtitle.textContent =
         "Join Kandys Treats and start ordering delicious meals.";
+
+});
+
+// =======================
+// Password Toggle
+// =======================
+
+passwordToggles.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const input = button.previousElementSibling;
+
+        if (input.type === "password") {
+
+            input.type = "text";
+
+            button.querySelector("img").src =
+                "icons/eye-off.svg";
+
+        }
+
+        else {
+
+            input.type = "password";
+
+            button.querySelector("img").src =
+                "icons/eye.svg";
+
+        }
+
+    });
+
+});
+
+// =======================
+// Register User
+// =======================
+
+registerForm?.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const firstName =
+        document.getElementById("first-name").value.trim();
+
+    const lastName =
+        document.getElementById("last-name").value.trim();
+
+    const email =
+        document.getElementById("register-email").value.trim();
+
+    const phone =
+        document.getElementById("register-phone").value.trim();
+
+    const password =
+        document.getElementById("register-password").value;
+
+    const confirmPassword =
+        document.getElementById("confirm-password").value;
+
+    // Validation
+
+    if (password !== confirmPassword) {
+
+        alert("Passwords do not match.");
+
+        return;
+
+    }
+
+    try {
+
+        // Create Firebase account
+
+        const userCredential =
+            await createUserWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+        const user = userCredential.user;
+
+        // Update Firebase display name
+
+        await updateProfile(user, {
+
+            displayName:
+                `${firstName} ${lastName}`
+
+        });
+
+        // Save profile to Firestore
+
+        await setDoc(
+
+            doc(db, "users", user.uid),
+
+            {
+
+                uid: user.uid,
+
+                firstName,
+
+                lastName,
+
+                fullName:
+                    `${firstName} ${lastName}`,
+
+                email,
+
+                phone,
+
+                role: "customer",
+
+                createdAt:
+                    serverTimestamp()
+
+            }
+
+        );
+
+        // Send verification email
+
+        await sendEmailVerification(user);
+
+        registerForm.reset();
+
+        alert(
+            "Account created successfully 🎉\n\nPlease verify your email."
+        );
+
+    }
+
+    catch (error) {
+
+    let message = "Something went wrong. Please try again.";
+
+    switch (error.code) {
+
+        case "auth/email-already-in-use":
+            message = "An account with this email already exists.";
+            break;
+
+        case "auth/invalid-email":
+            message = "Please enter a valid email address.";
+            break;
+
+        case "auth/weak-password":
+            message = "Password should be at least 6 characters.";
+            break;
+
+        case "auth/network-request-failed":
+            message = "Network error. Check your internet connection.";
+            break;
+
+    }
+
+    alert(message);
+
+    console.error(error);
+
+}
+
+});
+
+// =======================
+// Login User
+// =======================
+
+loginForm?.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const email = document
+        .getElementById("login-email")
+        .value
+        .trim();
+
+    const password = document
+        .getElementById("login-password")
+        .value;
+
+    try {
+
+        const userCredential =
+            await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+        const user = userCredential.user;
+
+        // Refresh user data
+        await reload(user);
+
+        // Check email verification
+        if (!user.emailVerified) {
+
+            await signOut(auth);
+
+            alert(
+                "Please verify your email before signing in."
+            );
+
+            return;
+
+        }
+
+        alert("Welcome back! 🎉");
+
+        // Redirect later
+        // window.location.href = "index.html";
+
+    }
+
+    catch (error) {
+
+        let message = "Unable to sign in.";
+
+        switch (error.code) {
+
+            case "auth/user-not-found":
+                message = "No account found with this email.";
+                break;
+
+            case "auth/wrong-password":
+                message = "Incorrect password.";
+                break;
+
+            case "auth/invalid-credential":
+                message = "Incorrect email or password.";
+                break;
+
+            case "auth/invalid-email":
+                message = "Invalid email address.";
+                break;
+
+            case "auth/network-request-failed":
+                message = "Check your internet connection.";
+                break;
+
+        }
+
+        alert(message);
+
+        console.error(error);
+
+    }
 
 });
