@@ -13,7 +13,9 @@ import {
     onAuthStateChanged,
     signOut,
     updateProfile,
-    reload
+    reload,
+    browserLocalPersistence,
+    setPersistence
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 
 import {
@@ -22,6 +24,12 @@ import {
     setDoc,
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+
+await setPersistence(
+    auth,
+    browserLocalPersistence
+);
 
 // =======================
 // DOM Elements
@@ -543,5 +551,32 @@ googleBtn?.addEventListener("click", async () => {
         resetButton(googleBtn);
 
     }
+
+});
+
+// =======================
+// Auth State Listener
+// =======================
+
+onAuthStateChanged(auth, async (user) => {
+
+    if (!user) return;
+
+    await reload(user);
+
+    if (!user.emailVerified) return;
+
+    // User is already logged in
+
+    showToast(
+        `Welcome back, ${user.displayName || "Customer"}!`,
+        "success"
+    );
+
+    setTimeout(() => {
+
+        window.location.href = "index.html";
+
+    }, 1200);
 
 });
