@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" data-page="auth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login • Kandy's Treats</title>
+
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+<div class="auth-page">
+
+    <div class="auth-card">
+
+    <img src="logo.png"
+         class="auth-logo"
+         alt="Kandy's Treats">
+
+    <h1 id="auth-title">
+        Welcome Back
+    </h1>
+
+    <p id="auth-subtitle">
+        Sign in to continue ordering your favourite meals.
+    </p>
+
+    <!-- Tabs -->
+
+    <div class="auth-tabs">
+
+        <button
+            id="login-tab"
+            class="auth-tab active">
+
+            Sign In
+
+        </button>
+
+        <button
+            id="register-tab"
+            class="auth-tab">
+
+            Create Account
+
+        </button>
+
+    </div>
+
+    <!-- LOGIN -->
+
+    <form id="login-form">
+
+        <!-- existing login inputs -->
+
+    </form>
+
+    <!-- REGISTER -->
+
+    <form id="register-form" class="hidden">
+
+    <div class="input-group">
+        <label>Full Name</label>
+        <input
+            type="text"
+            id="register-name"
+            placeholder="Enter your full name"
+            required>
+    </div>
+
+    <div class="input-group">
+        <label>Email</label>
+        <input
+            type="email"
+            id="register-email"
+            placeholder="Enter your email"
+            required>
+    </div>
+
+    <div class="input-group">
+        <label>Phone Number</label>
+        <input
+            type="tel"
+            id="register-phone"
+            placeholder="+234..."
+            required>
+    </div>
+
+    <div class="input-group">
+        <label>Password</label>
+        <input
+            type="password"
+            id="register-password"
+            placeholder="Create password"
+            required>
+    </div>
+
+    <button
+        class="btn-primary"
+        type="submit">
+
+        Create Account
+
+    </button>
+
+</form>
+
+</div>
+
+</div>
+
+<script type="module" src="js/auth.js"></script>
+
+</body>
+</html>

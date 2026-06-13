@@ -1,0 +1,259 @@
+/* ==========================
+   KANDY'S TREATS AUTH
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Inter,Segoe UI,sans-serif;
+    background:#12000d;
+    color:white;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:24px;
+
+    background-image:
+    radial-gradient(circle at top,#41122d 0%,transparent 45%),
+    radial-gradient(circle at bottom,#240013 0%,transparent 40%);
+}
+
+.auth-page{
+    width:100%;
+    display:flex;
+    justify-content:center;
+}
+
+.auth-card{
+
+    width:100%;
+    max-width:430px;
+
+    padding:40px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+    0 25px 60px rgba(0,0,0,.45);
+
+    animation:fadeUp .5s ease;
+}
+
+.auth-logo{
+
+    width:95px;
+
+    display:block;
+
+    margin:auto;
+    margin-bottom:28px;
+
+    border-radius:50%;
+
+    box-shadow:
+    0 0 30px rgba(255,80,170,.45);
+}
+
+.auth-card h1{
+
+    font-size:34px;
+
+    text-align:center;
+
+    margin-bottom:10px;
+}
+
+.auth-card p{
+
+    text-align:center;
+
+    color:#bbbbbb;
+
+    line-height:1.6;
+
+    margin-bottom:32px;
+}
+
+.input-group{
+
+    margin-bottom:22px;
+}
+
+.input-group label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-size:.95rem;
+
+    color:#f4c5dc;
+}
+
+.input-group input{
+
+    width:100%;
+
+    padding:15px 18px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:#1b0715;
+
+    color:white;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.25s;
+}
+
+.input-group input:focus{
+
+    border-color:#ff4fa5;
+
+    box-shadow:0 0 0 4px rgba(255,79,165,.15);
+}
+
+.btn-primary{
+
+    width:100%;
+
+    border:none;
+
+    padding:16px;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    color:white;
+
+    background:linear-gradient(135deg,#ff4fa5,#c21875);
+
+    transition:.3s;
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 15px 35px rgba(255,79,165,.35);
+}
+
+.auth-links{
+
+    margin-top:28px;
+
+    text-align:center;
+}
+
+.auth-links a{
+
+    color:#ff70b7;
+
+    text-decoration:none;
+
+    font-weight:500;
+}
+
+.auth-links p{
+
+    margin-top:18px;
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.auth-tabs{
+
+display:flex;
+
+margin-bottom:28px;
+
+background:#220815;
+
+padding:6px;
+
+border-radius:14px;
+
+}
+
+.auth-tab{
+
+flex:1;
+
+padding:14px;
+
+border:none;
+
+background:none;
+
+color:#bbbbbb;
+
+font-weight:600;
+
+cursor:pointer;
+
+border-radius:10px;
+
+transition:.3s;
+
+}
+
+.auth-tab.active{
+
+background:#ff4fa5;
+
+color:white;
+
+box-shadow:0 10px 25px rgba(255,79,165,.3);
+
+}
+
+.hidden{
+    display:none;
+}
+
+#login-form,
+#register-form{
+    animation:fadeUp .35s ease;
+}
