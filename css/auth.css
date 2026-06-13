@@ -43,7 +43,9 @@ overflow-x:hidden;
 
 width:100%;
 
-max-width:520px;
+max-width:540px;
+
+min-width:320px;
 
 padding:55px;
 
@@ -66,11 +68,15 @@ position:relative;
 
 overflow:hidden;
 
+isolation:isolate;
+
+animation:fadeUp .5s ease;
+
 }
 
 .auth-logo{
 
-width:110px;
+width:clamp(80px,18vw,110px);
 
 display:block;
 
@@ -112,7 +118,7 @@ transform:translateY(0);
 
 .auth-card h1{
 
-font-size:52px;
+font-size:clamp(2.8rem,7vw,3.5rem);
 
 font-weight:800;
 
@@ -122,11 +128,13 @@ text-align:center;
 
 margin-bottom:12px;
 
+line-height:1.05;
+
 }
 
 .auth-card p{
 
-font-size:20px;
+font-size:clamp(1rem,3vw,1.2rem);
 
 line-height:1.7;
 
@@ -182,7 +190,15 @@ margin-bottom:40px;
 
     font-family:"Outfit",sans-serif;
 
-    transition:.35s;
+    transition:
+
+border-color .25s,
+
+box-shadow .25s,
+
+background .25s,
+
+transform .2s;
 
 }
 
@@ -199,6 +215,8 @@ margin-bottom:40px;
     border-color:#ff4fa5;
 
     background:rgba(255,255,255,.06);
+
+    transform:translateY(-1px);
 
     box-shadow:
 
@@ -403,6 +421,10 @@ width:24px;
 }
 
 .google-btn:hover{
+
+transform:translateY(-2px);
+
+border-color:rgba(255,255,255,.15);
 
 background:rgba(255,255,255,.05);
 
