@@ -43,6 +43,9 @@ const passwordToggles = document.querySelectorAll(".password-toggle");
 
 const toast = document.getElementById("toast");
 
+const loginBtn = document.getElementById("login-btn");
+const registerBtn = document.getElementById("register-btn");
+
 // =======================
 // Switch Tabs
 // =======================
@@ -114,6 +117,8 @@ passwordToggles.forEach(button => {
 // =======================
 
 registerForm?.addEventListener("submit", async (e) => {
+
+    setLoading(registerBtn, "Creating Account...");
 
     e.preventDefault();
 
@@ -240,6 +245,12 @@ registerForm?.addEventListener("submit", async (e) => {
 
 }
 
+finally{
+
+    resetButton(registerBtn);
+
+}
+
 });
 
 // =======================
@@ -248,6 +259,8 @@ registerForm?.addEventListener("submit", async (e) => {
 
 loginForm?.addEventListener("submit", async (e) => {
 
+
+    setLoading(loginBtn, "Signing In...");
     e.preventDefault();
 
     const email = document
@@ -328,6 +341,12 @@ loginForm?.addEventListener("submit", async (e) => {
 
     }
 
+    finally{
+
+    resetButton(loginBtn);
+
+}
+
 });
 
 // =======================
@@ -349,5 +368,29 @@ function showToast(message, type = "success") {
         toast.classList.remove("show");
 
     }, 3500);
+
+}
+
+// =======================
+// Button Loading State
+// =======================
+
+function setLoading(button, text) {
+
+    button.disabled = true;
+
+    button.dataset.originalText = button.innerHTML;
+
+    button.innerHTML = `
+        <span class="spinner"></span>
+        ${text}
+    `;
+}
+
+function resetButton(button) {
+
+    button.disabled = false;
+
+    button.innerHTML = button.dataset.originalText;
 
 }

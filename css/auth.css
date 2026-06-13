@@ -780,3 +780,47 @@ max-width:none;
 }
 
 }
+
+/* ==========================
+   Button Spinner
+========================== */
+
+button:disabled{
+
+opacity:.8;
+
+cursor:not-allowed;
+
+}
+
+.spinner{
+
+width:18px;
+
+height:18px;
+
+border:2px solid rgba(255,255,255,.35);
+
+border-top:2px solid #fff;
+
+border-radius:50%;
+
+display:inline-block;
+
+margin-right:10px;
+
+vertical-align:middle;
+
+animation:spin .8s linear infinite;
+
+}
+
+@keyframes spin{
+
+to{
+
+transform:rotate(360deg);
+
+}
+
+}
