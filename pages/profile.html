@@ -1,213 +1,384 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | Kandy's Treats</title>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
-    <meta
-        name="theme-color"
-        content="#FF6B6B">
-
-    <title>Kandy's Treats | Profile</title>
-
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com">
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-
-    <link
-        rel="stylesheet"
-        href="../css/profile.css">
-
+    <link rel="stylesheet" href="../css/profile.css">
 </head>
 
 <body>
 
-    <main class="profile-page">
+<div class="profile-page">
 
-        <section class="profile-header">
+    <!-- =========================
+         HEADER
+    ========================== -->
 
-            <div class="top-bar">
+    <header class="profile-header">
 
-                <h2>Profile</h2>
+        <div class="header-overlay"></div>
 
-            </div>
+        <div class="profile-info">
 
-            <div class="profile-avatar">
+            <div class="avatar-wrapper">
 
                 <img
-                    id="profile-photo"
                     src="../images/default-avatar.png"
-                    alt="Profile">
+                    alt="Profile Photo"
+                    id="profile-photo"
+                    class="profile-avatar">
 
-                <span class="verified-badge">
+                <div class="verified-badge">
 
-                    ✓
+                    <span class="verified-dot"></span>
 
-                </span>
+                    <span>Verified Customer</span>
 
-            </div>
+                </div>
 
-            <h1 id="profile-name">
-
+                <h1 id="profile-name">
                 Loading...
-
             </h1>
 
-            <p class="profile-status">
+            </div>
 
-                Verified Customer
 
+        </div>
+
+    </header>
+
+    <!-- =========================
+         STATS
+    ========================== -->
+
+    <section class="stats-section">
+
+        <div class="stat-card">
+
+            <img
+                src="../icons/bag.svg"
+                alt=""
+                class="stat-icon">
+
+            <h2 id="orders-count">
+                0
+            </h2>
+
+            <p>
+                Orders
             </p>
 
-        </section>
+        </div>
 
-        <section class="stats-container">
+        <div class="stat-card">
 
-            <div class="stat-card">
+            <img
+                src="../icons/heart.svg"
+                alt=""
+                class="stat-icon">
 
-                <h3>0</h3>
+            <h2 id="favorites-count">
+                0
+            </h2>
 
-                <p>Orders</p>
+            <p>
+                Favorites
+            </p>
 
-            </div>
+        </div>
 
-            <div class="stat-card">
+        <div class="stat-card">
 
-                <h3>0</h3>
+            <img
+                src="../icons/gift.svg"
+                alt=""
+                class="stat-icon">
 
-                <p>Favorites</p>
+            <h2 id="reward-count">
+                0
+            </h2>
 
-            </div>
+            <p>
+                Rewards
+            </p>
 
-            <div class="stat-card">
+        </div>
 
-                <h3>0</h3>
+    </section>
 
-                <p>Rewards</p>
+    <!-- =========================
+         PERSONAL
+    ========================== -->
 
-            </div>
+    <section class="menu-section">
 
-        </section>
-
-        <section class="profile-content">
-
-    <div class="menu-section">
-
-        <h3>Personal</h3>
+        <h3>
+            Personal
+        </h3>
 
         <div class="menu-card">
 
             <a href="#" class="menu-item">
-                <span>👤 My Account</span>
-                <span>›</span>
+
+                <div class="menu-left">
+
+                    <img
+                        src="../icons/account.svg"
+                        alt=""
+                        class="menu-icon">
+
+                    <span>
+                        My Account
+                    </span>
+
+                </div>
+
+                <img
+                    src="../icons/chevron-right.svg"
+                    alt=""
+                    class="chevron">
+
             </a>
 
             <a href="#" class="menu-item">
-                <span>📍 Delivery Addresses</span>
-                <span>›</span>
+
+                <div class="menu-left">
+
+                    <img
+                        src="../icons/location.svg"
+                        alt=""
+                        class="menu-icon">
+
+                    <span>
+                        Delivery Addresses
+                    </span>
+
+                </div>
+
+                <img
+                    src="../icons/chevron-right.svg"
+                    alt=""
+                    class="chevron">
+
             </a>
 
             <a href="#" class="menu-item">
-                <span>❤️ Favorites</span>
-                <span>›</span>
+
+                <div class="menu-left">
+
+                    <img
+                        src="../icons/heart.svg"
+                        alt=""
+                        class="menu-icon">
+
+                    <span>
+                        Favorites
+                    </span>
+
+                </div>
+
+                <img
+                    src="../icons/chevron-right.svg"
+                    alt=""
+                    class="chevron">
+
             </a>
 
         </div>
 
-    </div>
+    </section>
 
-    <div class="menu-section">
+    <!-- =========================
+         ORDERS
+    ========================== -->
+
+    <section class="menu-section">
 
         <h3>Orders</h3>
 
         <div class="menu-card">
 
             <a href="#" class="menu-item">
-                <span>🛒 Active Orders</span>
-                <span>›</span>
+
+                <div class="menu-left">
+
+                    <img src="../icons/bag.svg"
+                         class="menu-icon"
+                         alt="">
+
+                    <span>Active Orders</span>
+
+                </div>
+
+                <img src="../icons/chevron-right.svg"
+                     class="chevron"
+                     alt="">
+
             </a>
 
             <a href="#" class="menu-item">
-                <span>📜 Order History</span>
-                <span>›</span>
+
+                <div class="menu-left">
+
+                    <img src="../icons/history.svg"
+                         class="menu-icon"
+                         alt="">
+
+                    <span>Order History</span>
+
+                </div>
+
+                <img src="../icons/chevron-right.svg"
+                     class="chevron"
+                     alt="">
+
             </a>
 
             <a href="#" class="menu-item">
-                <span>🎁 Rewards</span>
-                <span>›</span>
+
+                <div class="menu-left">
+
+                    <img src="../icons/gift.svg"
+                         class="menu-icon"
+                         alt="">
+
+                    <span>Rewards</span>
+
+                </div>
+
+                <img src="../icons/chevron-right.svg"
+                     class="chevron"
+                     alt="">
+
             </a>
 
         </div>
 
-    </div>
+    </section>
 
-    <div class="menu-section">
+    <!-- =========================
+         SUPPORT
+    ========================== -->
+
+    <section class="menu-section">
 
         <h3>Support</h3>
 
         <div class="menu-card">
 
             <a href="#" class="menu-item">
-                <span>🔔 Notifications</span>
-                <span>›</span>
+
+                <div class="menu-left">
+
+                    <img src="../icons/notification.svg"
+                         class="menu-icon"
+                         alt="">
+
+                    <span>Notifications</span>
+
+                </div>
+
+                <img src="../icons/chevron-right.svg"
+                     class="chevron"
+                     alt="">
+
             </a>
 
             <a href="#" class="menu-item">
-                <span>💬 Contact Support</span>
-                <span>›</span>
+
+                <div class="menu-left">
+
+                    <img src="../icons/support.svg"
+                         class="menu-icon"
+                         alt="">
+
+                    <span>Contact Support</span>
+
+                </div>
+
+                <img src="../icons/chevron-right.svg"
+                     class="chevron"
+                     alt="">
+
             </a>
 
             <a href="#" class="menu-item">
-                <span>❓ FAQs</span>
-                <span>›</span>
+
+                <div class="menu-left">
+
+                    <img src="../icons/faq.svg"
+                         class="menu-icon"
+                         alt="">
+
+                    <span>FAQs</span>
+
+                </div>
+
+                <img src="../icons/chevron-right.svg"
+                     class="chevron"
+                     alt="">
+
             </a>
 
         </div>
 
-    </div>
+    </section>
 
-    <div class="menu-section">
+    <!-- =========================
+         SETTINGS
+    ========================== -->
+
+    <section class="menu-section">
 
         <h3>Settings</h3>
 
         <div class="menu-card">
 
             <a href="#" class="menu-item logout">
-                <span>🚪 Logout</span>
-                <span>›</span>
+
+                <div class="menu-left">
+
+                    <img src="../icons/log-out.svg"
+                         class="menu-icon"
+                         alt="">
+
+                    <span>Logout</span>
+
+                </div>
+
+                <img src="../icons/chevron-right.svg"
+                     class="chevron"
+                     alt="">
+
             </a>
 
-            <a href="#" class="menu-item delete">
-                <span>🗑 Delete Account</span>
-                <span>›</span>
+            <a href="#" class="menu-item delete-account">
+
+                <div class="menu-left">
+
+                    <img src="../icons/account.svg"
+                         class="menu-icon"
+                         alt="">
+
+                    <span>Delete Account</span>
+
+                </div>
+
+                <img src="../icons/chevron-right.svg"
+                     class="chevron"
+                     alt="">
+
             </a>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
+</div>
 
-    </main>
-
-    <script
-        type="module"
-        src="../js/profile.js"></script>
+<script src="../js/profile.js"></script>
 
 </body>
-
 </html>
