@@ -1,140 +1,329 @@
 <!DOCTYPE html>
 <html lang="en" data-page="auth">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Login • Kandy's Treats</title>
+    <title>Kandy's Treats • Authentication</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/auth.css">
 
 </head>
+
 <body>
 
 <div class="auth-page">
 
-    <div class="auth-card">
+<div class="auth-card">
 
-    <img src="logo.png"
-         class="auth-logo"
-         alt="Kandy's Treats">
+<img
+src="logo.png"
+class="auth-logo"
+alt="Kandy's Treats">
 
-    <h1 id="auth-title">
-        Welcome Back
-    </h1>
+<h1 id="auth-title">
+Welcome Back
+</h1>
 
-    <p id="auth-subtitle">
-        Sign in to continue ordering your favourite meals.
-    </p>
+<p id="auth-subtitle">
+Sign in to continue ordering your favourite meals.
+</p>
 
-    <!-- Tabs -->
+<!-- Tabs -->
 
-    <div class="auth-tabs">
+<div class="auth-tabs">
 
-        <button
-            id="login-tab"
-            class="auth-tab active">
+<button
+type="button"
+id="login-tab"
+class="auth-tab active">
 
-            Sign In
+Sign In
 
-        </button>
+</button>
 
-        <button
-            id="register-tab"
-            class="auth-tab">
+<button
+type="button"
+id="register-tab"
+class="auth-tab">
 
-            Create Account
+Create Account
 
-        </button>
+</button>
 
-    </div>
+</div>
 
-    <!-- LOGIN -->
+<!-- ================= LOGIN ================= -->
 
-   <form id="login-form">
+<form id="login-form">
 
-    <div class="input-group">
-        <label>Email</label>
+<div class="input-group">
 
-        <input
-            type="email"
-            id="login-email"
-            placeholder="Enter your email"
-            required>
-    </div>
+<label>Email Address</label>
 
-    <div class="input-group">
-        <label>Password</label>
+<div class="input-box">
 
-        <input
-            type="password"
-            id="login-password"
-            placeholder="Enter your password"
-            required>
-    </div>
+<input
+type="email"
+id="login-email"
+placeholder="example@gmail.com"
+required>
 
-    <button
-        class="btn-primary"
-        type="submit">
+<img
+src="icons/email.svg"
+class="input-icon"
+alt="">
 
-        Sign In
+</div>
 
-    </button>
+</div>
+
+<div class="input-group">
+
+<label>Password</label>
+
+<div class="input-box">
+
+<input
+type="password"
+id="login-password"
+placeholder="Enter your password"
+required>
+
+<button
+type="button"
+class="password-toggle">
+
+<img
+src="icons/eye.svg"
+class="eye-icon"
+alt="">
+
+</button>
+
+</div>
+
+</div>
+
+<div class="auth-extra">
+
+<a href="forgot-password.html">
+
+Forgot Password?
+
+</a>
+
+</div>
+
+<button
+class="btn-primary"
+type="submit">
+
+Sign In
+
+</button>
+
+<div class="divider">
+
+<span>OR</span>
+
+</div>
+
+<button
+type="button"
+class="google-btn">
+
+<img
+src="icons/Google.svg"
+alt="Google">
+
+Continue with Google
+
+</button>
 
 </form>
 
-    <!-- REGISTER -->
+<!-- ================= REGISTER ================= -->
 
-    <form id="register-form" class="hidden">
+<form
+id="register-form"
+class="hidden">
 
-    <div class="input-group">
-        <label>Full Name</label>
-        <input
-            type="text"
-            id="register-name"
-            placeholder="Enter your full name"
-            required>
-    </div>
+<div class="name-row">
 
-    <div class="input-group">
-        <label>Email</label>
-        <input
-            type="email"
-            id="register-email"
-            placeholder="Enter your email"
-            required>
-    </div>
+<div class="input-group">
 
-    <div class="input-group">
-        <label>Phone Number</label>
-        <input
-            type="tel"
-            id="register-phone"
-            placeholder="+234..."
-            required>
-    </div>
+<label>First Name</label>
 
-    <div class="input-group">
-        <label>Password</label>
-        <input
-            type="password"
-            id="register-password"
-            placeholder="Create password"
-            required>
-    </div>
+<div class="input-box">
 
-    <button
-        class="btn-primary"
-        type="submit">
+<input
+type="text"
+id="first-name"
+placeholder="John"
+required>
 
-        Create Account
+<img
+src="icons/user.svg"
+class="input-icon"
+alt="">
 
-    </button>
+</div>
+
+</div>
+
+<div class="input-group">
+
+<label>Last Name</label>
+
+<div class="input-box">
+
+<input
+type="text"
+id="last-name"
+placeholder="Doe"
+required>
+
+<img
+src="icons/user.svg"
+class="input-icon"
+alt="">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="input-group">
+
+<label>Email Address</label>
+
+<div class="input-box">
+
+<input
+type="email"
+id="register-email"
+placeholder="example@gmail.com"
+required>
+
+<img
+src="icons/email.svg"
+class="input-icon"
+alt="">
+
+</div>
+
+</div>
+
+<div class="input-group">
+
+<label>Phone Number</label>
+
+<div class="input-box">
+
+<input
+type="tel"
+id="register-phone"
+placeholder="+234..."
+required>
+
+<img
+src="icons/phone.svg"
+class="input-icon"
+alt="">
+
+</div>
+
+</div>
+
+<div class="input-group">
+
+<label>Password</label>
+
+<div class="input-box">
+
+<input
+type="password"
+id="register-password"
+placeholder="Create password"
+required>
+
+<button
+type="button"
+class="password-toggle">
+
+<img
+src="icons/eye.svg"
+class="eye-icon"
+alt="">
+
+</button>
+
+</div>
+
+</div>
+
+<div class="input-group">
+
+<label>Confirm Password</label>
+
+<div class="input-box">
+
+<input
+type="password"
+id="confirm-password"
+placeholder="Confirm password"
+required>
+
+<button
+type="button"
+class="password-toggle">
+
+<img
+src="icons/eye.svg"
+class="eye-icon"
+alt="">
+
+</button>
+
+</div>
+
+</div>
+
+<button
+class="btn-primary"
+type="submit">
+
+Create Account
+
+</button>
+
+<div class="divider">
+
+<span>OR</span>
+
+</div>
+
+<button
+type="button"
+class="google-btn">
+
+<img
+src="icons/Google.svg"
+alt="Google">
+
+Continue with Google
+
+</button>
 
 </form>
 
@@ -145,4 +334,5 @@
 <script type="module" src="js/auth.js"></script>
 
 </body>
+
 </html>
