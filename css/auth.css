@@ -418,31 +418,161 @@ gap:18px;
 
 }
 
-@media(max-width:700px){
+@media (max-width:768px){
+
+body{
+
+padding:20px;
+
+align-items:flex-start;
+
+}
+
+.auth-page{
+
+padding:25px 0;
+
+}
 
 .auth-card{
 
-padding:35px 24px;
+max-width:100%;
+
+padding:36px 24px;
 
 border-radius:28px;
 
 }
 
+.auth-logo{
+
+width:88px;
+
+margin-bottom:22px;
+
+}
+
 .auth-card h1{
 
-font-size:40px;
+font-size:3rem;
+
+line-height:1;
+
+letter-spacing:-1px;
+
+margin-bottom:16px;
 
 }
 
 .auth-card p{
 
-font-size:17px;
+font-size:1.15rem;
+
+line-height:1.6;
+
+margin-bottom:30px;
+
+}
+
+.auth-tabs{
+
+margin-bottom:24px;
+
+}
+
+.auth-tab{
+
+padding:16px 10px;
+
+font-size:.95rem;
+
+}
+
+.input-box input{
+
+height:58px;
+
+font-size:15px;
+
+padding:0 52px 0 18px;
+
+}
+
+.btn-primary{
+
+height:58px;
+
+font-size:16px;
+
+}
+
+.google-btn{
+
+height:58px;
 
 }
 
 .name-row{
 
 grid-template-columns:1fr;
+
+gap:18px;
+
+}
+
+}
+
+@media (max-width:430px){
+
+body{
+
+padding:14px;
+
+}
+
+.auth-card{
+
+padding:28px 18px;
+
+border-radius:24px;
+
+}
+
+.auth-logo{
+
+width:76px;
+
+}
+
+.auth-card h1{
+
+font-size:2.6rem;
+
+}
+
+.auth-card p{
+
+font-size:1rem;
+
+}
+
+.input-group{
+
+margin-bottom:18px;
+
+}
+
+.auth-tabs{
+
+padding:5px;
+
+}
+
+.auth-tab{
+
+padding:14px 8px;
+
+font-size:.9rem;
 
 }
 
