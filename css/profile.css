@@ -12,9 +12,16 @@ body{
 
     font-family:Inter, sans-serif;
 
-    background:#f5f5f7;
+    background:
 
-    color:#1f2937;
+radial-gradient(circle at 10% 15%, rgba(255,175,90,.18), transparent 20%),
+
+radial-gradient(circle at 90% 25%, rgba(255,90,140,.12), transparent 18%),
+
+radial-gradient(circle at 70% 85%, rgba(255,180,120,.10), transparent 22%),
+
+#fffaf6;
+
 
 }
 
@@ -40,15 +47,11 @@ img{
 
 .profile-page{
 
-    max-width:500px;
+    width:min(95%,1300px);
 
-    margin:0 auto;
+    margin:auto;
 
-    min-height:100vh;
-
-    background:#f5f5f7;
-
-    padding-bottom:100px;
+    padding:40px 30px 100px;
 
 }
 
@@ -58,45 +61,169 @@ img{
 
 .profile-header{
 
+    position:relative;
+
     background:linear-gradient(135deg,#ff7a18,#ff4d6d);
 
-    border-bottom-left-radius:32px;
+    border-radius:36px;
 
-    border-bottom-right-radius:32px;
-
-    padding:40px 24px 90px;
-
-    position:relative;
+    padding:35px 45px;
 
     overflow:hidden;
 
+    box-shadow:0 20px 45px rgba(255,102,85,.25);
+
 }
 
-.profile-info{
+/* Decorative Lines */
+
+.profile-header::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:700px;
+
+    height:700px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:50%;
+
+    left:-300px;
+
+    top:-250px;
+
+}
+
+.profile-header::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:450px;
+
+    height:450px;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:50%;
+
+    right:-220px;
+
+    bottom:-220px;
+
+}
+
+/* ===========================================
+   TITLE
+=========================================== */
+
+.page-title{
+
+    color:#fff;
+
+    font-size:2.6rem;
+
+    font-weight:800;
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+}
+
+/* ===========================================
+   EDIT BUTTON
+=========================================== */
+
+.edit-profile{
+
+    position:absolute;
+
+    top:30px;
+
+    right:35px;
 
     display:flex;
 
-    flex-direction:column;
+    align-items:center;
+
+    gap:8px;
+
+    padding:12px 22px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(14px);
+
+    color:white;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+}
+
+.edit-profile:hover{
+
+    background:rgba(255,255,255,.28);
+
+}
+
+/* ===========================================
+   PROFILE CARD
+=========================================== */
+
+.profile-card{
+
+    display:grid;
+
+    grid-template-columns:180px 1fr;
 
     align-items:center;
+
+    gap:35px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+/* ===========================================
+   LEFT
+=========================================== */
+
+.profile-left{
+
+    display:flex;
+
+    justify-content:center;
 
 }
 
 .avatar-wrapper{
 
-    width:95px;
+    position:relative;
 
-    height:95px;
+    width:150px;
+
+    height:150px;
 
     border-radius:50%;
 
-    overflow:hidden;
+    background:white;
 
-    background:#ffffff;
+    padding:6px;
 
-    padding:4px;
-
-    box-shadow:0 10px 25px rgba(0,0,0,.15);
+    box-shadow:0 12px 30px rgba(0,0,0,.18);
 
 }
 
@@ -106,125 +233,204 @@ img{
 
     height:100%;
 
+    border-radius:50%;
+
     object-fit:cover;
 
+}
+
+.online-badge{
+
+    position:absolute;
+
+    width:32px;
+
+    height:32px;
+
     border-radius:50%;
+
+    background:#34d399;
+
+    border:5px solid white;
+
+    bottom:8px;
+
+    right:8px;
+
+}
+
+/* ===========================================
+   RIGHT
+=========================================== */
+
+.profile-right{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-start;
 
 }
 
 #profile-name{
 
-    margin-top:18px;
+    color:white;
 
-    font-size:2rem;
+    font-size:3rem;
 
-    font-weight:700;
+    font-weight:800;
 
-    color:#fff;
+    margin-bottom:14px;
 
 }
 
-.verified-badge{
+.member-level{
 
-    margin-top:10px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
 
-    display:flex;
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:
+        linear-gradient(
+        135deg,
+        #FFD76A,
+        #FFB800);
+
+    color:#7a4b00;
+
+    font-weight:700;
+
+    letter-spacing:.5px;
+
+    box-shadow:
+        0 8px 18px rgba(255,184,0,.35);
+
+}
+
+.profile-status{
+
+    display:inline-flex;
 
     align-items:center;
 
     gap:8px;
 
-    background:rgba(255,255,255,.18);
+    margin-top:14px;
 
-    color:#fff;
-
-    padding:8px 16px;
+    padding:8px 14px;
 
     border-radius:999px;
 
-    backdrop-filter:blur(8px);
+    background:rgba(255,255,255,.12);
 
-    font-size:.95rem;
+    border:1px solid rgba(255,255,255,.15);
+
+    color:white;
 
     font-weight:600;
 
-}
-
-.verified-dot{
-
-    width:10px;
-
-    height:10px;
-
-    border-radius:50%;
-
-    background:#22c55e;
+    backdrop-filter:blur(10px);
 
 }
 
 /* ===========================================
-   STATS
+   STATS BAR
 =========================================== */
 
-.stats-section{
+.stats-bar{
 
-    margin-top:-55px;
+    margin-top:45px;
 
-    padding:0 20px;
+    background:rgba(255,255,255,.16);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:22px;
+
+    padding:24px;
 
     display:grid;
 
     grid-template-columns:repeat(3,1fr);
 
-    gap:15px;
+    gap:0;
 
 }
 
-.stat-card{
+.stat-item{
 
-    background:#fff;
+    display:flex;
 
-    border-radius:20px;
+    flex-direction:column;
 
-    padding:20px 10px;
+    align-items:center;
+
+    justify-content:center;
 
     text-align:center;
 
-    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    padding:12px 20px;
+
+}
+
+.stat-item h3{
+
+    font-size:2rem;
+
+    font-weight:800;
+
+    color:white;
+
+    line-height:1;
+
+}
+
+.stat-item span{
+
+    font-size:.95rem;
+
+    color:rgba(255,255,255,.9);
+
+}
+
+.divider{
+
+    display: none;
 
 }
 
 .stat-icon{
 
-    width:26px;
+    width:56px;
 
-    height:26px;
+    height:56px;
 
-    margin:0 auto 12px;
+    padding:14px;
 
-}
+    background:white;
 
-.stat-card h2{
+    border-radius:18px;
 
-    font-size:1.7rem;
+    margin-bottom:14px;
 
-    font-weight:700;
-
-    color:#1f2937;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
 
 }
 
-.stat-card p{
+.stat-item div{
 
-    margin-top:5px;
+    display:flex;
 
-    font-size:.95rem;
-
-    color:#6b7280;
-
-    font-weight:500;
+    flex-direction:column;
 
 }
+
+
 
 /* ===========================================
    MENU SECTIONS
@@ -445,58 +651,49 @@ img{
 }
 
 
-.page-title {
-    color: #fff;
-    font-size: 2rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom:18px;
+
+@media(max-width:768px){
+
+.profile-card{
+
+    grid-template-columns:1fr;
+
+    text-align:center;
+
+    gap:24px;
+
 }
 
-.member-level{
+.profile-left{
 
-    margin-top:12px;
+    justify-content:center;
 
-    background:#ffffff;
+}
 
-    color:#ff6b35;
-
-    padding:8px 18px;
-
-    border-radius:999px;
-
-    font-size:.9rem;
-
-    font-weight:700;
-
-    display:inline-flex;
+.profile-right{
 
     align-items:center;
 
-    gap:6px;
+}
 
-    box-shadow:0 6px 15px rgba(0,0,0,.12);
+.stats-bar{
+
+    grid-template-columns:1fr;
+
+    gap:18px;
 
 }
 
-#profile-name{
+.divider{
 
-    margin-top:16px;
-
-    font-size:2.2rem;
-
-    font-weight:800;
-
-    color:#fff;
+    display:none;
 
 }
 
-.profile-status{
+.stat-item{
 
-    margin-top:10px;
+    justify-content:flex-start;
 
-    color:rgba(255,255,255,.9);
-
-    font-size:1rem;
+}
 
 }

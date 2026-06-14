@@ -18,106 +18,119 @@
 
     <header class="profile-header">
 
-        <div class="header-overlay"></div>
+    <button class="edit-profile">
 
-        <div class="profile-info">
+        <img src="../icons/edit.svg" class="edit-icon" alt="">
 
-            <h2 class="page-title">
+        Edit Profile
 
-                Profile
+    </button>
 
-            </h2>
+    <h2 class="page-title">
+
+        Profile
+
+    </h2>
+
+    <div class="profile-card">
+
+        <div class="profile-left">
 
             <div class="avatar-wrapper">
 
                 <img
                     src="../images/default-avatar.png"
                     class="profile-avatar"
-                    id="profile-photo">
+                    id="profile-photo"
+                    alt="Profile">
+
+                <span class="online-badge"></span>
 
             </div>
 
-<h1 id="profile-name">
-
-    Idris Muftau
-
-</h1>
-
-<div class="member-level">
-
-    Gold Member
-
-</div>
-
-<p class="profile-status">
-
-    Verified Customer
-
-</p>
-
-
         </div>
 
-    </header>
+        <div class="profile-right">
 
-    <!-- =========================
-         STATS
-    ========================== -->
+            <h1 id="profile-name">
 
-    <section class="stats-section">
+                Idris Muftau
 
-        <div class="stat-card">
+            </h1>
 
-            <img
-                src="../icons/bag.svg"
-                alt=""
-                class="stat-icon">
+            <div class="member-level">
 
-            <h2 id="orders-count">
-                0
-            </h2>
+                👑 Gold Member
 
-            <p>
-                Orders
+            </div>
+
+            <p class="profile-status">
+
+                Verified Customer
+
             </p>
 
         </div>
 
-        <div class="stat-card">
+    </div>
 
-            <img
-                src="../icons/heart.svg"
-                alt=""
-                class="stat-icon">
+    <div class="stats-bar">
 
-            <h2 id="favorites-count">
-                0
-            </h2>
+        <div class="stat-item">
 
-            <p>
-                Favorites
-            </p>
+            <img src="../icons/bag.svg"
+                 class="stat-icon"
+                 alt="">
 
-        </div>
+            <div>
 
-        <div class="stat-card">
+                <h3 id="orders-count">0</h3>
 
-            <img
-                src="../icons/gift.svg"
-                alt=""
-                class="stat-icon">
+                <span>Orders</span>
 
-            <h2 id="reward-count">
-                0
-            </h2>
-
-            <p>
-                Rewards
-            </p>
+            </div>
 
         </div>
 
-    </section>
+        <div class="divider"></div>
+
+        <div class="stat-item">
+
+            <img src="../icons/heart.svg"
+                 class="stat-icon"
+                 alt="">
+
+            <div>
+
+                <h3 id="favorites-count">0</h3>
+
+                <span>Favorites</span>
+
+            </div>
+
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="stat-item">
+
+            <img src="../icons/gift.svg"
+                 class="stat-icon"
+                 alt="">
+
+            <div>
+
+                <h3 id="reward-count">0</h3>
+
+                <span>Rewards</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
 
     <!-- =========================
          PERSONAL
