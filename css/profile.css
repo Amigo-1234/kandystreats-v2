@@ -607,68 +607,81 @@ img{
     border-radius:10px;
 
 }
-
 /* ===========================================
    MOBILE
 =========================================== */
 
-@media(max-width:480px){
+@media (max-width:768px){
 
-    .profile-header{
+.profile-page{
 
-    padding:24px 24px 70px;
-
-    min-height:280px;
-
-}
-
-    .stats-section{
-
-        padding:0 16px;
-
-        gap:12px;
-
-    }
-
-    .stat-card{
-
-        padding:18px 8px;
-
-    }
-
-    .menu-section{
-
-        margin:24px 16px 0;
-
-    }
-
-    .menu-item{
-
-        padding:18px 18px;
-
-    }
+    width:100%;
+    padding:18px;
 
 }
 
+/* HEADER */
 
+.profile-header{
 
-@media(max-width:768px){
+    padding:22px 20px 25px;
+    border-radius:28px;
+
+}
+
+/* Title */
+
+.page-title{
+
+    font-size:2rem;
+    margin-bottom:22px;
+
+}
+
+/* Edit button */
+
+.edit-profile{
+
+    top:18px;
+    right:18px;
+
+    padding:10px 16px;
+
+    font-size:.85rem;
+
+}
+
+/* Profile Layout */
 
 .profile-card{
 
-    grid-template-columns:1fr;
-
+    display:flex;
+    flex-direction:column;
+    align-items:center;
     text-align:center;
 
-    gap:24px;
+    gap:18px;
 
 }
 
-.profile-left{
+/* Avatar */
 
-    justify-content:center;
+.avatar-wrapper{
+
+    width:120px;
+    height:120px;
 
 }
+
+.online-badge{
+
+    width:24px;
+    height:24px;
+    border-width:4px;
+
+}
+
+/* Right side */
 
 .profile-right{
 
@@ -676,13 +689,55 @@ img{
 
 }
 
-.stats-bar{
+/* Name */
 
-    grid-template-columns:1fr;
+#profile-name{
 
-    gap:18px;
+    font-size:2.3rem;
+    line-height:1.15;
+    margin-bottom:10px;
 
 }
+
+/* Gold badge */
+
+.member-level{
+
+    padding:10px 18px;
+
+    font-size:.9rem;
+
+    margin-bottom:10px;
+
+}
+
+/* Verified */
+
+.profile-status{
+
+    margin-top:0;
+
+    font-size:.95rem;
+
+}
+
+/* Stats */
+
+.stats-bar{
+
+    margin-top:28px;
+
+    padding:16px;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:10px;
+
+}
+
+/* remove dividers */
 
 .divider{
 
@@ -690,10 +745,91 @@ img{
 
 }
 
+/* each stat */
+
 .stat-item{
 
-    justify-content:flex-start;
+    flex-direction:column;
+
+    gap:8px;
 
 }
+
+/* icons */
+
+.stat-icon{
+
+    width:48px;
+    height:48px;
+
+    padding:10px;
+
+    border-radius:14px;
+
+}
+
+/* numbers */
+
+.stat-item h3{
+
+    font-size:1.7rem;
+
+}
+
+/* labels */
+
+.stat-item span{
+
+    font-size:.85rem;
+
+}
+
+/* Menu */
+
+.menu-section{
+
+    margin:22px 0 0;
+
+}
+
+.menu-card{
+
+    border-radius:18px;
+
+}
+
+.menu-item{
+
+    padding:18px;
+
+}
+
+}
+
+.profile-status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    background:rgba(255,255,255,.15);
+
+    padding:8px 16px;
+
+    border-radius:999px;
+
+    backdrop-filter:blur(12px);
+
+}
+
+.status-icon{
+
+    width:18px;
+
+    height:18px;
+
+    filter:brightness(0) invert(1);
 
 }
