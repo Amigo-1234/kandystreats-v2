@@ -84,9 +84,9 @@ img{
 
 .avatar-wrapper{
 
-    width:110px;
+    width:95px;
 
-    height:110px;
+    height:95px;
 
     border-radius:50%;
 
@@ -441,5 +441,62 @@ img{
         padding:18px 18px;
 
     }
+
+}
+
+
+.page-title {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom:18px;
+}
+
+.member-level{
+
+    margin-top:12px;
+
+    background:#ffffff;
+
+    color:#ff6b35;
+
+    padding:8px 18px;
+
+    border-radius:999px;
+
+    font-size:.9rem;
+
+    font-weight:700;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    box-shadow:0 6px 15px rgba(0,0,0,.12);
+
+}
+
+#profile-name{
+
+    margin-top:16px;
+
+    font-size:2.2rem;
+
+    font-weight:800;
+
+    color:#fff;
+
+}
+
+.profile-status{
+
+    margin-top:10px;
+
+    color:rgba(255,255,255,.9);
+
+    font-size:1rem;
 
 }
