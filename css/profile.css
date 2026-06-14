@@ -606,82 +606,75 @@ img{
 
     border-radius:10px;
 
-}
-/* ===========================================
+}/* ===========================================
    MOBILE
 =========================================== */
 
 @media (max-width:768px){
 
 .profile-page{
-
     width:100%;
-    padding:18px;
-
+    padding:16px;
 }
-
-/* HEADER */
 
 .profile-header{
 
-    padding:22px 20px 25px;
+    padding:20px 18px;
     border-radius:28px;
 
 }
 
-/* Title */
+/* ---------- Top Row ---------- */
 
 .page-title{
 
     font-size:2rem;
-    margin-bottom:22px;
+    text-align:left;
+    margin-bottom:18px;
 
 }
-
-/* Edit button */
 
 .edit-profile{
 
     top:18px;
     right:18px;
 
-    padding:10px 16px;
+    padding:9px 14px;
 
-    font-size:.85rem;
+    font-size:.82rem;
 
 }
 
-/* Profile Layout */
+/* ---------- Profile ---------- */
 
 .profile-card{
 
     display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
 
-    gap:18px;
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:14px;
+
+    text-align:center;
 
 }
 
-/* Avatar */
-
 .avatar-wrapper{
 
-    width:120px;
-    height:120px;
+    width:92px;
+    height:92px;
 
 }
 
 .online-badge{
 
-    width:24px;
-    height:24px;
-    border-width:4px;
+    width:22px;
+    height:22px;
+    border:3px solid white;
 
 }
-
-/* Right side */
 
 .profile-right{
 
@@ -689,86 +682,73 @@ img{
 
 }
 
-/* Name */
-
 #profile-name{
 
-    font-size:2.3rem;
-    line-height:1.15;
-    margin-bottom:10px;
+    font-size:2rem;
+
+    line-height:1.1;
+
+    margin-bottom:8px;
 
 }
 
-/* Gold badge */
+/* ---------- Badges ---------- */
 
 .member-level{
 
-    padding:10px 18px;
+    padding:8px 18px;
 
-    font-size:.9rem;
+    font-size:.82rem;
 
     margin-bottom:10px;
 
 }
 
-/* Verified */
-
 .profile-status{
 
-    margin-top:0;
+    padding:7px 16px;
 
-    font-size:.95rem;
+    font-size:.82rem;
 
 }
 
-/* Stats */
+/* ---------- Stats ---------- */
 
 .stats-bar{
 
-    margin-top:28px;
+    margin-top:18px;
 
-    padding:16px;
+    padding:18px 10px;
+
+    border-radius:20px;
 
     display:grid;
 
     grid-template-columns:repeat(3,1fr);
 
-    gap:10px;
+    gap:6px;
 
 }
-
-/* remove dividers */
-
-.divider{
-
-    display:none;
-
-}
-
-/* each stat */
 
 .stat-item{
 
-    flex-direction:column;
-
-    gap:8px;
+    padding:0;
 
 }
-
-/* icons */
 
 .stat-icon{
 
-    width:48px;
-    height:48px;
+    width:42px;
 
-    padding:10px;
+    height:42px;
+
+    padding:9px;
 
     border-radius:14px;
 
-}
+    margin-bottom:10px;
 
-/* numbers */
+}
 
 .stat-item h3{
 
@@ -776,15 +756,13 @@ img{
 
 }
 
-/* labels */
-
 .stat-item span{
 
-    font-size:.85rem;
+    font-size:.82rem;
 
 }
 
-/* Menu */
+/* ---------- Menu ---------- */
 
 .menu-section{
 
@@ -804,32 +782,10 @@ img{
 
 }
 
-}
+.menu-left span{
 
-.profile-status{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    background:rgba(255,255,255,.15);
-
-    padding:8px 16px;
-
-    border-radius:999px;
-
-    backdrop-filter:blur(12px);
+    font-size:.96rem;
 
 }
-
-.status-icon{
-
-    width:18px;
-
-    height:18px;
-
-    filter:brightness(0) invert(1);
 
 }
