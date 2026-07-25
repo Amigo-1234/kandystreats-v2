@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Account | Kandy's Treats</title>
+
+    <!-- Fonts -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="../css/account.css">
+
+</head>
+
+<body>
+
+    <!-- Background Decorations -->
+
+    <div class="bg-blur blur-one"></div>
+    <div class="bg-blur blur-two"></div>
+    <div class="bg-grid"></div>
+
+    <main class="account-page">
+
+        <!-- ====================================
+                    HERO
+        ===================================== -->
+
+        <section class="hero-card">
+
+            <div class="hero-content">
+
+                <a href="profile.html"
+                   class="back-button">
+
+                    <img src="../icons/chevron-left.svg"
+                         alt="Back">
+
+                </a>
+
+                <span class="hero-tag">
+
+                    ACCOUNT
+
+                </span>
+
+                <h1>
+
+                    My Account
+
+                </h1>
+
+                <p>
+
+                    Manage your personal information,
+                    security settings and login details.
+
+                </p>
+
+                <div class="verified-pill">
+
+                    <span class="status-dot"></span>
+
+                    Verified Account
+
+                </div>
+
+            </div>
+
+            <div class="hero-image">
+
+                <div class="hero-circle hero-circle-1"></div>
+
+                <div class="hero-circle hero-circle-2"></div>
+
+                <div class="shield-wrapper">
+
+                    <img src="../icons/shield-check.svg"
+                         alt="Security">
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ====================================
+                ACCOUNT INFORMATION
+        ===================================== -->
+
+        <section class="card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+
+                        Account Information
+
+                    </h2>
+
+                    <p>
+
+                        Information connected to your account.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="info-list">
+
+                <!-- Full Name -->
+
+                <div class="info-row">
+
+                    <div class="info-left">
+
+                        <div class="icon">
+
+                            <img src="../icons/user.svg"
+                                 alt="">
+
+                        </div>
+
+                        <div>
+
+                            <h3>
+
+                                Full Name
+
+                            </h3>
+
+                            <span>
+
+                                Your display name
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <strong id="account-name">
+
+                        Idris Muftau
+
+                    </strong>
+
+                </div>
+
+                <!-- Email -->
+
+                <div class="info-row">
+
+                    <div class="info-left">
+
+                        <div class="icon">
+
+                            <img src="../icons/email.svg"
+                                 alt="">
+
+                        </div>
+
+                        <div>
+
+                            <h3>
+
+                                Email Address
+
+                            </h3>
+
+                            <span>
+
+                                Used for login
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <strong id="account-email">
+
+                        example@email.com
+
+                    </strong>
+
+                </div>
+
+                <!-- Phone -->
+
+                <div class="info-row">
+
+                    <div class="info-left">
+
+                        <div class="icon">
+
+                            <img src="../icons/phone.svg"
+                                 alt="">
+
+                        </div>
+
+                        <div>
+
+                            <h3>
+
+                                Phone Number
+
+                            </h3>
+
+                            <span>
+
+                                Contact number
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <strong id="account-phone">
+
+                        Not Added
+
+                    </strong>
+
+                </div>
+
+                <!-- Login Provider -->
+
+                <div class="info-row">
+
+                    <div class="info-left">
+
+                        <div class="icon">
+
+                            <img src="../icons/lock.svg"
+                                 alt="">
+
+                        </div>
+
+                        <div>
+
+                            <h3>
+
+                                Login Method
+
+                            </h3>
+
+                            <span>
+
+                                Authentication provider
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <strong id="login-provider">
+
+                        Google
+
+                    </strong>
+
+                </div>
+
+                <!-- Member Since -->
+
+                <div class="info-row">
+
+                    <div class="info-left">
+
+                        <div class="icon">
+
+                            <img src="../icons/calendar.svg"
+                                 alt="">
+
+                        </div>
+
+                        <div>
+
+                            <h3>
+
+                                Member Since
+
+                            </h3>
+
+                            <span>
+
+                                Account created
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <strong id="member-since">
+
+                        October 2025
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ====================================
+                ACCOUNT ACTIONS
+        ===================================== -->
+
+        <section class="card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+
+                        Quick Actions
+
+                    </h2>
+
+                    <p>
+
+                        Manage your account and profile.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="action-list">
+
+                <!-- Edit Profile -->
+
+                <a href="edit-profile.html"
+                   class="action-item">
+
+                    <div class="action-left">
+
+                        <div class="icon">
+
+                            <img src="../icons/edit.svg"
+                                 alt="Edit Profile">
+
+                        </div>
+
+                        <div>
+
+                            <h3>
+
+                                Edit Profile
+
+                            </h3>
+
+                            <p>
+
+                                Update your name, phone number and profile picture.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <img src="../icons/chevron-right.svg"
+                         class="arrow"
+                         alt="">
+
+                </a>
+
+                <!-- Change Password -->
+
+                <a href="#"
+                   class="action-item">
+
+                    <div class="action-left">
+
+                        <div class="icon">
+
+                            <img src="../icons/password.svg"
+                                 alt="Password">
+
+                        </div>
+
+                        <div>
+
+                            <h3>
+
+                                Change Password
+
+                            </h3>
+
+                            <p>
+
+                                Keep your account secure with a stronger password.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <img src="../icons/chevron-right.svg"
+                         class="arrow"
+                         alt="">
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ====================================
+                SECURITY CARD
+        ===================================== -->
+
+        <section class="security-card">
+
+            <div class="security-icon">
+
+                <img src="../icons/shield-check.svg"
+                     alt="Security">
+
+            </div>
+
+            <div class="security-content">
+
+                <h2>
+
+                    Your account is protected
+
+                </h2>
+
+                <p>
+
+                    Your personal information is protected using secure authentication,
+                    encrypted connections and industry-standard security practices.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ====================================
+                SUPPORT CARD
+        ===================================== -->
+
+        <section class="support-card">
+
+            <div class="support-text">
+
+                <span>
+
+                    Need Help?
+
+                </span>
+
+                <h2>
+
+                    We're always here for you.
+
+                </h2>
+
+                <p>
+
+                    Having trouble with your account or profile?
+                    Our support team is happy to help anytime.
+
+                </p>
+
+                <a href="contact.html"
+                   class="support-btn">
+
+                    Contact Support
+
+                </a>
+
+            </div>
+
+            <div class="support-image">
+
+                <img src="../icons/support-illustration.svg"
+                     alt="Support">
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ====================================
+                FOOTER
+        ===================================== -->
+
+        <footer class="account-footer">
+
+            <p>
+
+                Kandy's Treats
+
+            </p>
+
+            <span>
+
+                Sweet moments, beautifully served.
+
+            </span>
+
+        </footer>
+
+    </main>
+
+    <script src="../js/account.js"></script>
+
+</body>
+
+</html>
