@@ -9,26 +9,51 @@
 
 /*========== ROOT ==========*/
 
+/*==================================
+    ROOT VARIABLES
+==================================*/
+
 :root{
 
-    --bg:#FCF8F4;
-    --surface:#FFFFFF;
-    --surface-light:#FFFDFB;
+    /* Brand */
 
-    --primary:#C88A3D;
-    --primary-light:#F7E7D3;
+    --primary:#E91E63;
+
+    --primary-dark:#C2185B;
+
+    --primary-light:#FFE3EF;
+
+    --secondary:#F7F0FF;
+
+    /* Background */
+
+    --bg:#FFF8FC;
+
+    --surface:#FFFFFF;
+
+    --surface-light:#FFFDFE;
+
+    /* Text */
 
     --text:#2F3545;
-    --muted:#8B94A7;
 
-    --success:#22C55E;
+    --muted:#8A8FA3;
 
-    --border:#F2E8DD;
+    /* Status */
+
+    --success:#17C964;
+
+    /* Border */
+
+    --border:#F6D8E7;
+
+    /* Shadow */
 
     --shadow:
-    0 15px 45px rgba(31,38,135,.08);
 
-    --radius:28px;
+    0 18px 45px rgba(233,30,99,.08);
+
+    --radius:24px;
 
 }
 
@@ -54,18 +79,23 @@ body{
 
     font-family:"Instrument Sans",sans-serif;
 
+    background:
+
+    linear-gradient(
+        180deg,
+        #FFF8FC 0%,
+        #FFFDFE 100%
+    );
+
     color:var(--text);
 
-    background:var(--bg);
+    overflow-x:hidden;
 
     min-height:100vh;
-
-    overflow-x:hidden;
 
     position:relative;
 
 }
-
 /*========== BACKGROUND GLOW ==========*/
 
 body::before{
@@ -74,21 +104,23 @@ body::before{
 
     position:fixed;
 
-    width:450px;
+    width:420px;
 
-    height:450px;
-
-    background:#FFE5BF;
-
-    filter:blur(120px);
-
-    border-radius:50%;
+    height:420px;
 
     top:-180px;
 
     left:-120px;
 
-    z-index:-3;
+    border-radius:50%;
+
+    background:#FFD6EA;
+
+    filter:blur(120px);
+
+    opacity:.8;
+
+    z-index:-2;
 
 }
 
@@ -98,21 +130,23 @@ body::after{
 
     position:fixed;
 
-    width:380px;
+    width:350px;
 
-    height:380px;
-
-    background:#FFD9CF;
-
-    filter:blur(120px);
-
-    border-radius:50%;
-
-    bottom:-150px;
+    height:350px;
 
     right:-120px;
 
-    z-index:-3;
+    bottom:-120px;
+
+    border-radius:50%;
+
+    background:#F2D9FF;
+
+    filter:blur(120px);
+
+    opacity:.8;
+
+    z-index:-2;
 
 }
 
@@ -130,7 +164,7 @@ body::after{
 
     background-size:24px 24px;
 
-    opacity:.35;
+    opacity:.18;
 
     z-index:-4;
 
@@ -182,11 +216,11 @@ body::after{
 
 .account-page{
 
-    max-width:900px;
+    max-width:820px;
 
     margin:auto;
 
-    padding:60px 22px 90px;
+    padding:42px 18px 70px;
 
 }
 
@@ -220,25 +254,25 @@ img{
 
     align-items:center;
 
-    gap:50px;
+    gap:28px;
 
-    padding:45px;
+    padding:30px;
 
-    border-radius:36px;
+    border-radius:26px;
 
-    background:
-    rgba(255,255,255,.75);
+    background:rgba(255,255,255,.82);
 
-    backdrop-filter:blur(20px);
+    backdrop-filter:blur(18px);
 
-    border:1px solid rgba(255,255,255,.7);
+    border:1px solid rgba(255,255,255,.75);
 
-    box-shadow:var(--shadow);
+    box-shadow:
 
-    margin-bottom:38px;
+    0 20px 45px rgba(233,30,99,.08);
+
+    margin-bottom:24px;
 
 }
-
 .hero-content{
 
     flex:1;
@@ -290,7 +324,7 @@ img{
 
     border-radius:999px;
 
-    background:var(--primary-light);
+     background:var(--primary-light);
 
     color:var(--primary);
 
@@ -306,23 +340,23 @@ img{
 
 .hero-content h1{
 
-    font-size:3rem;
+    font-size:2.45rem;
 
     line-height:1.1;
 
-    margin-bottom:16px;
+    margin:12px 0;
 
 }
 
 .hero-content p{
 
-    max-width:480px;
+    font-size:.98rem;
+
+    line-height:1.7;
 
     color:var(--muted);
 
-    font-size:1.05rem;
-
-    line-height:1.8;
+    max-width:420px;
 
 }
 
