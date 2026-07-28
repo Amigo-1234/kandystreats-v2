@@ -575,7 +575,7 @@ onAuthStateChanged(auth, async (user) => {
 
     setTimeout(() => {
 
-        window.location.href = "index.html";
+        window.location.href = "profile.html";
 
     }, 1200);
 

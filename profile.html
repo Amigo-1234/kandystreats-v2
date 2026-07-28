@@ -17,6 +17,7 @@ content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+<link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/profile.css">
 
 </head>
@@ -25,309 +26,101 @@ content="width=device-width, initial-scale=1.0">
 
 <main class="profile-page">
 
-    <!-- ================= HEADER ================= -->
+    <!-- Announcement -->
+    <section class="announcement-bar">
 
-    <header class="profile-header">
+        <p>
 
-        <div class="header-content">
+            PROFILE • WELCOME BACK • KANDY'S TREATS • PREMIUM EXPERIENCE
 
-            <p class="greeting">
-                Good Evening 👋
-            </p>
+        </p> 
 
-            <h1 class="profile-name">
-                Idris Muftau
-            </h1>
+    </section>
 
-            <div class="verified-badge">
+    <!-- Header -->
 
-                <img src="icons/verified.svg" alt="">
+    <section class="profile-header">
 
-                <span>Verified Customer</span>
+        <p class="page-greeting">
 
-            </div>
+            Good Evening 👋
 
-        </div>
+        </p>
 
-        <button class="notification-btn">
+        <h1>
 
-            <img src="icons/notification.svg" alt="">
+            Welcome back,
+            <span id="profile-name">
+                Loading...
+            </span>
 
-        </button>
+        </h1>
 
-    </header>
+        <p class="page-subtitle">
 
-    <!-- ================= PROFILE CARD ================= -->
+            Manage your Kandy's Treats account.
 
-    <section class="profile-card">
+        </p>
 
-        <div class="profile-top">
+    </section>
 
-            <div class="avatar-wrapper">
+    <!-- Hero Card -->
+
+    <section class="glass-card profile-hero">
+
+        <div class="avatar-wrapper">
+
+            <img
+            id="profile-avatar"
+            src="images/default-avatar.png"
+            alt="Profile">
+
+            <button class="camera-btn">
 
                 <img
-                    src="images/default-avatar.png"
-                    class="avatar"
-                    alt="Profile">
-
-                <button class="camera-btn">
-
-                    <img src="icons/camera.svg" alt="">
-
-                </button>
-
-            </div>
-
-            <div class="profile-info">
-
-                <h2>Idris Muftau</h2>
-
-                <p class="membership">
-                    Gold Member
-                </p>
-
-                <span class="member-date">
-                    Member since Jan 2026
-                </span>
-
-            </div>
-
-            <button class="profile-arrow">
-
-                <img src="icons/chevron-right.svg" alt="">
+                src="icons/camera.svg"
+                alt="">
 
             </button>
 
         </div>
 
-        <div class="profile-divider"></div>
+        <div class="hero-content">
 
-        <div class="profile-stats">
+            <h2 id="profile-fullname">
 
-            <div class="stat-card">
+                Loading...
 
-                <div class="stat-icon">
+            </h2>
 
-                    <img src="icons/wallet.svg" alt="">
+            <div class="verified-row">
 
-                </div>
+                <img
+                src="icons/verified.svg"
+                alt="">
 
-                <span>Wallet</span>
+                <span>
 
-                <strong>₦0.00</strong>
+                    Verified Customer
 
-            </div>
-
-            <div class="stat-card">
-
-                <div class="stat-icon">
-
-                    <img src="icons/reward.svg" alt="">
-
-                </div>
-
-                <span>Rewards</span>
-
-                <strong>20</strong>
+                </span>
 
             </div>
 
-            <div class="stat-card">
+            <div class="membership-pill">
 
-                <div class="stat-icon">
+                <span id="membership">
 
-                    <img src="icons/coupon.svg" alt="">
+                    Classic Member
 
-                </div>
-
-                <span>Coupons</span>
-
-                <strong>0</strong>
+                </span>
 
             </div>
 
-        </div>
+            <button
+            class="btn-primary">
 
-        <button class="edit-profile-btn">
-
-            Edit Profile
-
-        </button>
-
-    </section>
-
-    <!-- ================= QUICK ACTIONS ================= -->
-
-    <section class="quick-section">
-
-        <div class="section-title">
-
-            <h3>Everything You Need</h3>
-
-        </div>
-
-        <div class="quick-grid">
-
-            <!-- Orders -->
-
-            <a href="#" class="quick-card">
-
-                <div class="quick-card-header">
-
-                    <div class="quick-icon">
-
-                        <img src="icons/orders.svg" alt="">
-
-                    </div>
-
-                    <div class="quick-arrow">
-
-                        <img src="icons/arrow-right.svg" alt="">
-
-                    </div>
-
-                </div>
-
-                <div class="quick-card-body">
-
-                    <h4>Orders</h4>
-
-                    <p>
-                        Track every purchase.
-                    </p>
-
-                </div>
-
-            </a>
-
-            <!-- Favorites -->
-
-            <a href="#" class="quick-card">
-
-                <div class="quick-card-header">
-
-                    <div class="quick-icon">
-
-                        <img src="icons/favorite.svg" alt="">
-
-                    </div>
-
-                    <div class="quick-arrow">
-
-                        <img src="icons/arrow-right.svg" alt="">
-
-                    </div>
-
-                </div>
-
-                <div class="quick-card-body">
-
-                    <h4>Favorites</h4>
-
-                    <p>
-                        Meals you love most.
-                    </p>
-
-                </div>
-
-            </a>
-
-            <!-- Rewards -->
-
-            <a href="#" class="quick-card">
-
-                <div class="quick-card-header">
-
-                    <div class="quick-icon">
-
-                        <img src="icons/gift.svg" alt="">
-
-                    </div>
-
-                    <div class="quick-arrow">
-
-                        <img src="icons/arrow-right.svg" alt="">
-
-                    </div>
-
-                </div>
-
-                <div class="quick-card-body">
-
-                    <h4>Rewards</h4>
-
-                    <p>
-                        Earn sweet points.
-                    </p>
-
-                </div>
-
-            </a>
-
-            <!-- Account -->
-
-            <a href="#" class="quick-card">
-
-                <div class="quick-card-header">
-
-                    <div class="quick-icon">
-
-                        <img src="icons/account.svg" alt="">
-
-                    </div>
-
-                    <div class="quick-arrow">
-
-                        <img src="icons/arrow-right.svg" alt="">
-
-                    </div>
-
-                </div>
-
-                <div class="quick-card-body">
-
-                    <h4>Account</h4>
-
-                    <p>
-                        Manage your profile.
-                    </p>
-
-                </div>
-
-            </a>
-
-        </div>
-
-    </section>
-
-    <!-- ================= LATEST ORDER ================= -->
-
-    <section class="latest-section">
-
-        <div class="section-title">
-
-            <h3>Your Latest Treat</h3>
-
-        </div>
-
-        <div class="latest-card">
-
-            <img
-                src="images/pizza.jpg"
-                class="latest-image"
-                alt="Pizza">
-
-            <div class="latest-info">
-
-                <h4>Pepperoni Pizza</h4>
-
-                <span>Delivered Yesterday</span>
-
-            </div>
-
-            <button class="reorder-btn">
-
-                Reorder
+                Edit Profile
 
             </button>
 
@@ -336,6 +129,11 @@ content="width=device-width, initial-scale=1.0">
     </section>
 
 </main>
+
+<script
+type="module"
+src="js/profile.js">
+</script>
 
 </body>
 
