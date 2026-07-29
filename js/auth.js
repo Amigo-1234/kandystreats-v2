@@ -58,8 +58,12 @@ const registerBtn = document.getElementById("register-btn");
 const forgotPassword =
     document.getElementById("forgot-password");
 
-const googleBtn =
-    document.getElementById("google-signin-btn");    
+const googleLoginBtn =
+    document.getElementById("google-login-btn");
+
+const googleRegisterBtn =
+    document.getElementById("google-register-btn");   
+
 
 // =======================
 // Switch Tabs
@@ -159,7 +163,10 @@ registerForm?.addEventListener("submit", async (e) => {
 
     if (password !== confirmPassword) {
 
-        alert("Passwords do not match.");
+                showToast(
+            "Passwords do not match.",
+            "warning"
+        );
 
         return;
 
@@ -189,10 +196,11 @@ registerForm?.addEventListener("submit", async (e) => {
 
         // Save profile to Firestore
 
-        await setDoc(
+await setDoc(
     doc(db, "users", user.uid),
     {
 
+        // Identity
         uid: user.uid,
 
         firstName,
@@ -207,10 +215,12 @@ registerForm?.addEventListener("submit", async (e) => {
 
         photoURL: "",
 
+        // Account
         role: "customer",
 
         membership: "Classic",
 
+        // Wallet & Rewards
         wallet: 0,
 
         rewardPoints: 0,
@@ -221,17 +231,18 @@ registerForm?.addEventListener("submit", async (e) => {
 
         totalSpent: 0,
 
+        // Future Features
         favoriteItems: [],
 
         addresses: [],
 
         notifications: true,
 
+        // Timestamp
         createdAt: serverTimestamp()
 
     }
-); 
-
+);
         // Send verification email
 
         await sendEmailVerification(user);
@@ -489,99 +500,153 @@ forgotPassword?.addEventListener("click", async (e) => {
 // Google Sign In
 // =======================
 
+// =======================
+// Google Sign In
+// =======================
+
 const provider = new GoogleAuthProvider();
 
-googleBtn?.addEventListener("click", async () => {
+async function signInWithGoogle(button){
 
-    try {
+    try{
 
-        setLoading(googleBtn, "Signing in...");
+        setLoading(button,"Signing in...");
 
-        const result = await signInWithPopup(auth, provider);
+        const result =
+            await signInWithPopup(auth,provider);
 
         const user = result.user;
 
-        const userRef = doc(db, "users", user.uid);
+        
+        const userRef =
+            doc(db,"users",user.uid);
 
-        const userSnap = await getDoc(userRef);
+        const userSnap =
+            await getDoc(userRef);
 
-        // First-time Google user
-        if (!userSnap.exists()) {
+        // First time Google user
 
-            const names = (user.displayName || "").split(" ");
+        if(!userSnap.exists()){
 
-            await setDoc(userRef, {
+            const names =
+                (user.displayName || "").split(" ");
 
-                uid: user.uid,
+            await setDoc(userRef,{
 
-                firstName: names[0] || "",
+                // Identity
+                uid:user.uid,
 
-                lastName: names.slice(1).join(" ") || "",
+                firstName:names[0] || "",
 
-                fullName: user.displayName || "",
+                lastName:names.slice(1).join(" ") || "",
 
-                email: user.email,
+                fullName:user.displayName || "",
 
-                phone: user.phoneNumber || "",
+                email:user.email,
 
-                photoURL: user.photoURL || "",
+                phone:user.phoneNumber || "",
 
-                role: "customer",
+                photoURL:user.photoURL || "",
 
-                provider: "google",
+                // Account
+                role:"customer",
 
-                createdAt: serverTimestamp()
+                provider:"google",
+
+                membership:"Classic",
+
+                // Wallet
+                wallet:0,
+
+                rewardPoints:0,
+
+                coupons:0,
+
+                totalOrders:0,
+
+                totalSpent:0,
+
+                // Future
+                favoriteItems:[],
+
+                addresses:[],
+
+                notifications:true,
+
+                createdAt:serverTimestamp()
 
             });
 
         }
 
         showToast(
-            `Welcome ${user.displayName || "back"}!`,
-            "success"
-        );
+    `Welcome ${user.displayName || "back"}!`,
+    "success"
+);
 
-        // window.location.href = "index.html";
+setTimeout(() => {
+
+    window.location.href = "profile.html";
+
+},1200);
 
     }
 
-    catch (error) {
+    catch(error){
 
         console.error(error);
 
         let message = "Google Sign-In failed.";
 
-        if (error.code === "auth/popup-closed-by-user") {
+        if(error.code === "auth/popup-closed-by-user"){
 
             message = "Google sign-in was cancelled.";
 
         }
 
-        showToast(message, "error");
+        showToast(message,"error");
 
     }
 
-    finally {
+    finally{
 
-        resetButton(googleBtn);
+        resetButton(button);
 
     }
+
+}
+
+googleLoginBtn?.addEventListener("click",()=>{
+
+    signInWithGoogle(googleLoginBtn);
+
+});
+
+googleRegisterBtn?.addEventListener("click",()=>{
+
+    signInWithGoogle(googleRegisterBtn);
 
 });
 
 // =======================
 // Auth State Listener
 // =======================
-
 onAuthStateChanged(auth, async (user) => {
 
     if (!user) return;
 
     await reload(user);
 
-    if (!user.emailVerified) return;
+    const isGoogle =
+        user.providerData.some(
+            provider => provider.providerId === "google.com"
+        );
 
-    // User is already logged in
+    if (!isGoogle && !user.emailVerified) {
+
+        return;
+
+    }
 
     showToast(
         `Welcome back, ${user.displayName || "Customer"}!`,
@@ -590,8 +655,8 @@ onAuthStateChanged(auth, async (user) => {
 
     setTimeout(() => {
 
-        window.location.href = "profile.html";
+        window.location.replace("profile.html");
 
-    }, 1200);
+    },1200);
 
 });

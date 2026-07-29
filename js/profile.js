@@ -1,7 +1,8 @@
 import { auth, db } from "./firebase.js";
 
 import {
-    onAuthStateChanged
+    onAuthStateChanged,
+    signOut
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 
 import {
@@ -36,6 +37,9 @@ const coupons =
 
 const orders =
     document.getElementById("orders-total");
+
+const logoutBtn =
+    document.getElementById("logout-btn");
 
 // =======================
 // Load Profile
@@ -123,6 +127,36 @@ onAuthStateChanged(auth, async (user) => {
     catch (error) {
 
         console.error("Profile Error:", error);
+
+    }
+
+});
+
+
+// =======================
+// Logout
+// =======================
+
+logoutBtn?.addEventListener("click", async () => {
+
+    const confirmLogout =
+        confirm("Are you sure you want to logout?");
+
+    if (!confirmLogout) return;
+
+    try {
+
+        await signOut(auth);
+
+        window.location.replace("auth.html");
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        alert("Unable to logout.");
 
     }
 
