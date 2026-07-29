@@ -344,7 +344,7 @@ loginForm?.addEventListener("submit", async (e) => {
         showToast("Welcome back! 🎉");
 
         // Redirect later
-        // window.location.href = "index.html";
+        window.location.href = "profile.html";
 
     }
 
@@ -513,71 +513,70 @@ async function signInWithGoogle(button){
         setLoading(button,"Signing in...");
 
         const result =
-            await signInWithPopup(auth,provider);
+    await signInWithPopup(auth, provider);
 
-        const user = result.user;
+await reload(result.user);
+
+const user = auth.currentUser;
+
+console.log("Google User:", user);
+console.log("Provider Data:", user.providerData);
+console.log("Google Email:", user.email);
+
+
 
         
-        const userRef =
-            doc(db,"users",user.uid);
+    const userRef = doc(db, "users", user.uid);
 
-        const userSnap =
-            await getDoc(userRef);
+console.log("Google UID:", user.uid);
+console.log("Google Email:", user.email);
 
-        // First time Google user
+const userSnap = await getDoc(userRef);
 
-        if(!userSnap.exists()){
+console.log("Document exists before create?", userSnap.exists());
 
-            const names =
-                (user.displayName || "").split(" ");
+if (!userSnap.exists()) {
 
-            await setDoc(userRef,{
+    console.log("Creating Firestore document...");
 
-                // Identity
-                uid:user.uid,
+    const names = (user.displayName || "").split(" ");
 
-                firstName:names[0] || "",
+    await setDoc(userRef, {
 
-                lastName:names.slice(1).join(" ") || "",
+        // Identity
+        uid: user.uid,
+        firstName: names[0] || "",
+        lastName: names.slice(1).join(" ") || "",
+        fullName: user.displayName || "",
+        email: user.email || "",
+        phone: user.phoneNumber || "",
+        photoURL: user.photoURL || "",
 
-                fullName:user.displayName || "",
+        // Account
+        role: "customer",
+        provider: "google",
+        membership: "Classic",
 
-                email:user.email,
+        // Wallet
+        wallet: 0,
+        rewardPoints: 0,
+        coupons: 0,
+        totalOrders: 0,
+        totalSpent: 0,
 
-                phone:user.phoneNumber || "",
+        // Future
+        favoriteItems: [],
+        addresses: [],
+        notifications: true,
 
-                photoURL:user.photoURL || "",
+        createdAt: serverTimestamp()
 
-                // Account
-                role:"customer",
+    });
 
-                provider:"google",
+    console.log("Firestore document created.");
+}
 
-                membership:"Classic",
 
-                // Wallet
-                wallet:0,
-
-                rewardPoints:0,
-
-                coupons:0,
-
-                totalOrders:0,
-
-                totalSpent:0,
-
-                // Future
-                favoriteItems:[],
-
-                addresses:[],
-
-                notifications:true,
-
-                createdAt:serverTimestamp()
-
-            });
-
-        }
 
         showToast(
     `Welcome ${user.displayName || "back"}!`,
@@ -589,6 +588,7 @@ setTimeout(() => {
     window.location.href = "profile.html";
 
 },1200);
+
 
     }
 
