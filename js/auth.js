@@ -190,32 +190,47 @@ registerForm?.addEventListener("submit", async (e) => {
         // Save profile to Firestore
 
         await setDoc(
+    doc(db, "users", user.uid),
+    {
 
-            doc(db, "users", user.uid),
+        uid: user.uid,
 
-            {
+        firstName,
 
-                uid: user.uid,
+        lastName,
 
-                firstName,
+        fullName: `${firstName} ${lastName}`,
 
-                lastName,
+        email,
 
-                fullName:
-                    `${firstName} ${lastName}`,
+        phone,
 
-                email,
+        photoURL: "",
 
-                phone,
+        role: "customer",
 
-                role: "customer",
+        membership: "Classic",
 
-                createdAt:
-                    serverTimestamp()
+        wallet: 0,
 
-            }
+        rewardPoints: 0,
 
-        );
+        coupons: 0,
+
+        totalOrders: 0,
+
+        totalSpent: 0,
+
+        favoriteItems: [],
+
+        addresses: [],
+
+        notifications: true,
+
+        createdAt: serverTimestamp()
+
+    }
+); 
 
         // Send verification email
 
