@@ -298,3 +298,212 @@
     margin-top:0;
 
 }
+
+
+/* ===============================
+   ACCOUNT SECTION
+=============================== */
+
+.account-section{
+
+    margin-top:40px;
+
+}
+
+.section-title{
+
+    font-size:1.35rem;
+
+    font-weight:700;
+
+    margin-bottom:22px;
+
+    color:#fff;
+
+}
+
+.account-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+
+/* ===============================
+   ACCOUNT ITEM
+=============================== */
+
+.account-item{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:18px 20px;
+
+    text-decoration:none;
+
+    color:#fff;
+
+    border-radius:22px;
+
+    transition:.35s ease;
+
+    cursor:pointer;
+
+}
+
+.account-item:hover{
+
+    transform:translateY(-3px);
+
+    border-color:rgba(255,79,165,.35);
+
+    box-shadow:
+    0 10px 35px rgba(255,79,165,.12);
+
+}
+
+.account-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+
+/* ===============================
+   ICON
+=============================== */
+
+.account-icon{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    flex-shrink:0;
+
+}
+
+.account-icon img{
+
+    width:22px;
+
+    height:22px;
+
+    object-fit:contain;
+
+    opacity:.9;
+
+}
+
+
+/* ===============================
+   TEXT
+=============================== */
+
+.account-left span:last-child{
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    color:#f6f6f6;
+
+}
+
+
+/* ===============================
+   RIGHT ARROW
+=============================== */
+
+.account-arrow{
+
+    width:18px;
+
+    height:18px;
+
+    opacity:.45;
+
+    transition:.3s;
+
+}
+
+.account-item:hover .account-arrow{
+
+    opacity:1;
+
+    transform:translateX(5px);
+
+}
+
+
+/* ===============================
+   LOGOUT
+=============================== */
+
+.logout-item{
+
+    border:1px solid rgba(255,79,165,.18);
+
+    background:rgba(255,79,165,.05);
+
+}
+
+.logout-item .account-left span{
+
+    color:#ff8ab7;
+
+}
+
+.logout-item .account-icon{
+
+    background:rgba(255,79,165,.08);
+
+    border-color:rgba(255,79,165,.18);
+
+}
+
+.logout-item:hover{
+
+    border-color:#ff4fa5;
+
+    box-shadow:
+
+    0 10px 35px rgba(255,79,165,.18);
+
+}
+
+.orders-icon img{
+    filter:brightness(0) saturate(100%) invert(74%) sepia(70%) saturate(1200%) hue-rotate(345deg);
+}
+
+.favorite-icon img{
+    filter:drop-shadow(0 0 8px rgba(255,79,165,.4));
+}
+
+.logout-icon img{
+    filter:drop-shadow(0 0 8px rgba(255,80,120,.5));
+}
