@@ -47,7 +47,13 @@ const logoutBtn =
 
 onAuthStateChanged(auth, async (user) => {
 
-    if (!user) return;
+    if (!user) {
+
+    window.location.replace("auth.html");
+
+    return;
+
+}
 
     try {
 
@@ -65,6 +71,7 @@ onAuthStateChanged(auth, async (user) => {
 
         const data = snap.data();
 
+      
         // -----------------------
         // Full Name
         // -----------------------
