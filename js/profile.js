@@ -42,6 +42,36 @@ const logoutBtn =
     document.getElementById("logout-btn");
 
 // =======================
+// Edit Profile
+// =======================
+
+const editProfileBtn =
+    document.querySelector(".edit-profile-btn");
+
+const editModal =
+    document.getElementById("edit-profile-modal");
+
+const closeModalBtn =
+    document.getElementById("close-modal");
+
+const cancelEditBtn =
+    document.getElementById("cancel-edit");
+
+const saveProfileBtn =
+    document.getElementById("save-profile");
+
+const editFirstName =
+    document.getElementById("edit-first-name");
+
+const editLastName =
+    document.getElementById("edit-last-name");
+
+const editPhone =
+    document.getElementById("edit-phone");   
+    
+    let currentUserData = null; // Store the current user data
+
+// =======================
 // Load Profile
 // =======================
 
@@ -70,6 +100,8 @@ onAuthStateChanged(auth, async (user) => {
         }
 
         const data = snap.data();
+
+        currentUserData = data; // Store the current user data
 
       
         // -----------------------
@@ -136,6 +168,41 @@ onAuthStateChanged(auth, async (user) => {
         console.error("Profile Error:", error);
 
     }
+
+});
+
+// =======================
+// Open Edit Profile
+// =======================
+
+editProfileBtn?.addEventListener("click", () => {
+
+    if (!currentUserData) return;
+
+    editFirstName.value =
+        currentUserData.firstName || "";
+
+    editLastName.value =
+        currentUserData.lastName || "";
+
+    editPhone.value =
+        currentUserData.phone || "";
+
+    editModal.classList.remove("hidden");
+
+});
+
+// Close Modal
+
+closeModalBtn?.addEventListener("click", () => {
+
+    editModal.classList.add("hidden");
+
+});
+
+cancelEditBtn?.addEventListener("click", () => {
+
+    editModal.classList.add("hidden");
 
 });
 

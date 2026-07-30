@@ -360,6 +360,86 @@ content="width=device-width, initial-scale=1.0">
 
 </section>
 
+<!-- ===========================
+EDIT PROFILE MODAL
+============================ -->
+
+<div id="edit-profile-modal" class="modal hidden">
+
+    <div class="modal-card">
+
+        <div class="modal-header">
+
+            <h2>Edit Profile</h2>
+
+            <button
+                id="close-modal"
+                class="close-btn">
+
+                &times;
+
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <div class="input-group">
+
+                <label>First Name</label>
+
+                <input
+                    type="text"
+                    id="edit-first-name">
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Last Name</label>
+
+                <input
+                    type="text"
+                    id="edit-last-name">
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Phone Number</label>
+
+                <input
+                    type="tel"
+                    id="edit-phone">
+
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+
+            <button
+                id="cancel-edit"
+                class="cancel-btn">
+
+                Cancel
+
+            </button>
+
+            <button
+                id="save-profile"
+                class="save-btn">
+
+                Save Changes
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
 </main>
 
 <script type="module" src="js/auth-guard.js"></script>
