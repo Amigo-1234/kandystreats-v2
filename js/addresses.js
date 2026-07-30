@@ -8,9 +8,11 @@ import {
     collection,
     addDoc,
     getDocs,
+    deleteDoc,
+    doc,
+    updateDoc,
     serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
-
+}from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 // =======================
 // DOM Elements
 // =======================
@@ -45,14 +47,19 @@ const emptyState =
 const toast =
     document.getElementById("toast");
 
+const modalTitle =
+document.getElementById("address-modal-title");
+
+let editingAddressId = null; // Track the address being edited
+
     function showToast(message, success = true) {
 
     toast.textContent = message;
 
     toast.className =
-        success
-            ? "show success"
-            : "show error";
+success
+? "toast show success"
+: "toast show error";
 
     setTimeout(() => {
 
@@ -63,6 +70,14 @@ const toast =
 }
 
 addAddressBtn?.addEventListener("click", () => {
+
+    editingAddressId = null;
+
+    modalTitle.textContent = "Add Address";
+
+    addressLabel.value = "";
+
+    addressText.value = "";
 
     modal.classList.remove("hidden");
 
@@ -100,18 +115,12 @@ onAuthStateChanged(auth, async (user) => {
 
 saveBtn?.addEventListener("click", async () => {
 
-    const label =
-        addressLabel.value.trim();
-
-    const address =
-        addressText.value.trim();
+    const label = addressLabel.value.trim();
+    const address = addressText.value.trim();
 
     if (!label || !address) {
 
-        showToast(
-            "Please fill in all fields.",
-            false
-        );
+        showToast("Please fill in all fields.", false);
 
         return;
 
@@ -123,27 +132,52 @@ saveBtn?.addEventListener("click", async () => {
 
         if (!user) return;
 
-        await addDoc(
+        if (editingAddressId) {
 
-            collection(
-                db,
-                "users",
-                user.uid,
-                "addresses"
-            ),
+            await updateDoc(
 
-            {
-                label,
-                address,
-                isDefault: false,
-                createdAt: serverTimestamp()
-            }
+                doc(
+                    db,
+                    "users",
+                    user.uid,
+                    "addresses",
+                    editingAddressId
+                ),
 
-        );
+                {
+                    label,
+                    address
+                }
 
-        showToast(
-            "Address saved successfully!"
-        );
+            );
+
+            showToast("Address updated!");
+
+        } else {
+
+            await addDoc(
+
+                collection(
+                    db,
+                    "users",
+                    user.uid,
+                    "addresses"
+                ),
+
+                {
+                    label,
+                    address,
+                    isDefault:false,
+                    createdAt:serverTimestamp()
+                }
+
+            );
+
+            showToast("Address saved!");
+
+        }
+
+        editingAddressId = null;
 
         modal.classList.add("hidden");
 
@@ -151,7 +185,7 @@ saveBtn?.addEventListener("click", async () => {
 
         addressText.value = "";
 
-        loadAddresses();
+        await loadAddresses();
 
     }
 
@@ -159,10 +193,7 @@ saveBtn?.addEventListener("click", async () => {
 
         console.error(error);
 
-        showToast(
-            "Failed to save address.",
-            false
-        );
+        showToast("Something went wrong.", false);
 
     }
 
@@ -197,68 +228,160 @@ async function loadAddresses(){
 
     emptyState.style.display = "none";
 
-    snapshot.forEach((doc)=>{
+    snapshot.forEach((doc) => {
 
-        const data = doc.data();
+    const data = doc.data();
 
-       addressList.innerHTML += `
+    addressList.innerHTML += `
 
-<div class="glass-card address-card" data-id="${doc.id}">
+    <div class="glass-card address-card" data-id="${doc.id}">
 
-    <div class="address-header">
+        <div class="address-header">
 
-        <div class="address-title">
+            <div class="address-title">
 
-            <div class="address-icon">
+                <div class="address-icon">
 
-                <img src="icons/location.svg" alt="Location">
+                    <img src="icons/location.svg" alt="Location">
+
+                </div>
+
+                <div>
+
+                    <h3>${data.label}</h3>
+
+                    <p>${data.address}</p>
+
+                </div>
 
             </div>
 
-            <div>
-
-                <h3>${data.label}</h3>
-
-                <p>${data.address}</p>
-
-            </div>
+            ${
+                data.isDefault
+                    ? `<span class="default-badge">Default</span>`
+                    : ""
+            }
 
         </div>
 
-        ${
-            data.isDefault
-            ? `<span class="default-badge">Default</span>`
-            : ""
-        }
+        <div class="address-actions">
+
+            <button
+                class="edit-address"
+                data-id="${doc.id}"
+                data-label="${data.label}"
+                data-address="${data.address}">
+
+                <img src="icons/edit.svg" alt="">
+                Edit
+
+            </button>
+
+            <button
+                class="delete-address"
+                data-id="${doc.id}">
+
+                <img src="icons/trash.svg" alt="">
+                Delete
+
+            </button>
+
+        </div>
 
     </div>
 
-    <div class="address-actions">
+    `;
 
-        <button
-            class="edit-address"
-            data-id="${doc.id}">
+});
 
-            <img src="icons/edit.svg" alt="">
-            Edit
+// =======================
+// Delete Listeners
+// =======================
 
-        </button>
+document
+.querySelectorAll(".delete-address")
+.forEach(button => {
 
-        <button
-            class="delete-address"
-            data-id="${doc.id}">
+    button.addEventListener("click", () => {
 
-            <img src="icons/trash.svg" alt="">
-            Delete
-
-        </button>
-
-    </div>
-
-</div>
-
-`;
+        deleteAddress(button.dataset.id);
 
     });
+
+});
+
+// =======================
+// Edit Listeners
+// =======================
+
+document
+.querySelectorAll(".edit-address")
+.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        editingAddressId = button.dataset.id;
+
+        addressLabel.value = button.dataset.label;
+
+        addressText.value = button.dataset.address;
+
+        modalTitle.textContent = "Edit Address";
+
+modal.classList.remove("hidden");
+
+    });
+
+});
+
+} // <-- End of loadAddresses()
+
+
+// =======================
+// Delete Address
+// =======================
+
+async function deleteAddress(addressId){
+
+    const user = auth.currentUser;
+
+    if(!user) return;
+
+    const confirmed = confirm(
+        "Delete this address?"
+    );
+
+    if(!confirmed) return;
+
+    try{
+
+        await deleteDoc(
+
+            doc(
+                db,
+                "users",
+                user.uid,
+                "addresses",
+                addressId
+            )
+
+        );
+
+        showToast("Address deleted!");
+
+        await loadAddresses();
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        showToast(
+            "Unable to delete address.",
+            false
+        );
+
+    }
 
 }

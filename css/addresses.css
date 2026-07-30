@@ -629,3 +629,73 @@ ADDRESSES PAGE
         0 18px 45px rgba(255,79,165,.15);
 
 }
+
+
+
+/* ==========================
+   Toast Notification
+========================== */
+
+#toast{
+
+    position:fixed;
+
+    top:30px;
+
+    right:30px;
+
+    min-width:320px;
+
+    max-width:400px;
+
+    padding:18px 22px;
+
+    border-radius:18px;
+
+    background:#1f1f25;
+
+    color:#fff;
+
+    font-weight:500;
+
+    font-size:.95rem;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+
+    transform:translateX(450px);
+
+    opacity:0;
+
+    transition:.4s;
+
+    z-index:9999;
+
+    border-left:5px solid #ff4fa5;
+
+}
+
+#toast.show{
+
+    transform:translateX(0);
+
+    opacity:1;
+
+}
+
+#toast.success{
+
+    border-left-color:#22c55e;
+
+}
+
+#toast.error{
+
+    border-left-color:#ef4444;
+
+}
+
+#toast.warning{
+
+    border-left-color:#f59e0b;
+
+}
