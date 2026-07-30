@@ -1,0 +1,631 @@
+/* ===========================
+ADDRESSES PAGE
+=========================== */
+
+.addresses-page{
+
+    max-width:900px;
+
+    margin:auto;
+
+    padding:30px 20px 120px;
+
+}
+
+.page-header{
+
+    margin-bottom:32px;
+
+}
+
+.back-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:#ff6a3d;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    margin-bottom:18px;
+
+}
+
+.page-header h1{
+
+    color:#fff;
+
+    font-size:2rem;
+
+    margin-bottom:8px;
+
+}
+
+.page-header p{
+
+    color:#aaa;
+
+}
+
+.address-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.address-card{
+
+    background:rgba(20,20,30,.92);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    padding:24px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:20px;
+
+}
+
+.address-info h3{
+
+    color:#fff;
+
+    margin-bottom:10px;
+
+}
+
+.address-info p{
+
+    color:#bbb;
+
+    line-height:1.6;
+
+}
+
+.default-badge{
+
+    display:inline-block;
+
+    margin-top:12px;
+
+    background:#ff6a3d;
+
+    color:#fff;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    font-size:.8rem;
+
+    font-weight:600;
+
+}
+
+.address-actions{
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+.address-actions button{
+
+    border:none;
+
+    background:none;
+
+    cursor:pointer;
+
+}
+
+.address-actions img{
+
+    width:22px;
+
+}
+
+.empty-state{
+
+    text-align:center;
+
+    margin-top:80px;
+
+}
+
+.empty-state img{
+
+    width:70px;
+
+    opacity:.5;
+
+    margin-bottom:18px;
+
+}
+
+.empty-state h2{
+
+    color:#fff;
+
+    margin-bottom:10px;
+
+}
+
+.empty-state p{
+
+    color:#999;
+
+}
+
+.floating-btn{
+
+    position:fixed;
+
+    right:24px;
+
+    bottom:24px;
+
+    width:65px;
+
+    height:65px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        135deg,
+        #ff3b8d,
+        #ff6a3d
+    );
+
+    color:#fff;
+
+    font-size:34px;
+
+    cursor:pointer;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.35);
+
+}
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.65);
+
+    backdrop-filter:blur(12px);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    z-index:9999;
+
+}
+
+.modal.hidden{
+
+    display:none;
+
+}
+
+.modal-card{
+
+    width:100%;
+
+    max-width:500px;
+
+    background:rgba(20,20,30,.95);
+
+    border-radius:24px;
+
+    padding:28px;
+
+}
+
+.modal-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:24px;
+
+}
+
+.modal-header h2{
+
+    color:#fff;
+
+}
+
+.close-btn{
+
+    background:none;
+
+    border:none;
+
+    color:#fff;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+}
+
+.modal-body{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.input-group label{
+
+    display:block;
+
+    color:#bbb;
+
+    margin-bottom:8px;
+
+}
+
+.input-group input,
+
+.input-group textarea{
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:#111;
+
+    color:#fff;
+
+    outline:none;
+
+    resize:none;
+
+}
+
+.modal-footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:12px;
+
+    margin-top:24px;
+
+}
+
+.cancel-btn{
+
+    padding:12px 20px;
+
+    border-radius:14px;
+
+    background:none;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    color:#fff;
+
+    cursor:pointer;
+
+}
+
+.save-btn{
+
+    padding:12px 22px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:linear-gradient(
+        135deg,
+        #ff3b8d,
+        #ff6a3d
+    );
+
+    color:#fff;
+
+    cursor:pointer;
+
+}
+.back-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    text-decoration:none;
+
+    margin-bottom:24px;
+
+}
+
+.back-btn:hover{
+
+    transform:translateX(-4px);
+
+}
+
+.back-icon{
+
+    width:46px;
+
+    height:46px;
+
+    border-radius:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.back-icon img{
+
+    width:20px;
+
+    height:20px;
+
+    filter:
+        brightness(0)
+        saturate(100%)
+        invert(43%)
+        sepia(95%)
+        saturate(2466%)
+        hue-rotate(317deg);
+
+}
+
+.back-btn span{
+
+    color:#ff6a3d;
+
+    font-weight:700;
+
+}
+
+.address-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:16px;
+
+}
+.address-title{
+
+    display:flex;
+
+    gap:14px;
+
+    align-items:flex-start;
+
+}
+
+.address-icon{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:14px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(162,89,255,.08);
+
+    border:1px solid rgba(162,89,255,.18);
+
+    flex-shrink:0;
+
+}
+
+.address-icon img{
+
+    width:22px;
+
+    filter:
+        brightness(0)
+        saturate(100%)
+        invert(55%)
+        sepia(29%)
+        saturate(1255%)
+        hue-rotate(245deg);
+
+}
+
+.address-title h3{
+
+    margin:0;
+
+    font-size:1.05rem;
+
+    font-weight:700;
+
+}
+
+.address-title p{
+
+    margin-top:6px;
+
+    color:#bfb8c7;
+
+    line-height:1.6;
+
+    font-size:.92rem;
+
+}
+.default-badge{
+
+    background:rgba(255,79,165,.12);
+
+    border:1px solid rgba(255,79,165,.25);
+
+    color:#ff6db9;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    font-size:.75rem;
+
+    font-weight:700;
+
+}
+.address-actions{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-top:22px;
+
+}
+
+.address-actions button{
+
+    flex:1;
+
+    height:46px;
+
+    border:none;
+
+    border-radius:14px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:8px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    font-weight:600;
+
+}
+
+.edit-address{
+
+    background:rgba(255,255,255,.06);
+
+    color:#fff;
+
+}
+
+.delete-address{
+
+    background:rgba(255,79,165,.08);
+
+    color:#ff6ba5;
+
+}
+
+.address-actions img{
+
+    width:18px;
+
+}
+
+.edit-address img{
+
+    filter:brightness(0) invert(1);
+
+}
+
+.delete-address img{
+
+    filter:
+        brightness(0)
+        saturate(100%)
+        invert(32%)
+        sepia(95%)
+        saturate(3028%)
+        hue-rotate(339deg);
+
+}
+
+.address-actions button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.address-actions{
+
+    margin-top:22px;
+
+    padding-top:18px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+}
+.address-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:rgba(255,79,165,.25);
+
+    box-shadow:
+        0 18px 45px rgba(255,79,165,.15);
+
+}

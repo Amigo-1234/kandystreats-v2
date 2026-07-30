@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Kandy's Treats • Saved Addresses</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/addresses.css">
+
+</head>
+
+<body>
+
+<main class="addresses-page">
+
+    <!-- Header -->
+
+    <section class="page-header">
+
+        <a href="profile.html" class="back-btn">
+
+    <div class="back-icon">
+
+        <img
+            src="icons/chevron-left.svg"
+            alt="Back">
+
+    </div>
+
+    <span>Back</span>
+
+</a>
+
+        <h1>
+
+            Saved Addresses
+
+        </h1>
+
+        <p>
+
+            Manage your delivery locations.
+
+        </p>
+
+    </section>
+
+    <!-- Address List -->
+
+    <section
+        id="address-list"
+        class="address-list">
+
+    </section>
+
+    <!-- Empty State -->
+
+    <section
+        id="empty-state"
+        class="empty-state">
+
+        <img
+            src="icons/location.svg"
+            alt="">
+
+        <h2>
+
+            No Saved Addresses
+
+        </h2>
+
+        <p>
+
+            Add your first delivery address.
+
+        </p>
+
+    </section>
+
+    <!-- Floating Add Button -->
+
+    <button
+        id="add-address-btn"
+        class="floating-btn">
+
+        +
+
+    </button>
+
+    <!-- Toast -->
+
+    <div id="toast"></div>
+
+    <!-- Modal -->
+
+    <div
+        id="address-modal"
+        class="modal hidden">
+
+        <div class="modal-card">
+
+            <div class="modal-header">
+
+                <h2 id="address-modal-title">
+
+                    Add Address
+
+                </h2>
+
+                <button
+                    id="close-address-modal"
+                    class="close-btn">
+
+                    &times;
+
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div class="input-group">
+
+                    <label>
+
+                        Address Label
+
+                    </label>
+
+                    <input
+                        id="address-label"
+                        type="text"
+                        placeholder="Home, Work...">
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>
+
+                        Full Address
+
+                    </label>
+
+                    <textarea
+                        id="address-text"
+                        rows="4"
+                        placeholder="Enter your delivery address"></textarea>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button
+                    id="cancel-address"
+                    class="cancel-btn">
+
+                    Cancel
+
+                </button>
+
+                <button
+                    id="save-address"
+                    class="save-btn">
+
+                    Save Address
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+<script type="module" src="js/auth-guard.js"></script>
+<script type="module" src="js/addresses.js"></script>
+
+</body>
+
+</html>
