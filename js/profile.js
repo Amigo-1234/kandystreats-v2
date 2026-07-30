@@ -7,7 +7,8 @@ import {
 
 import {
     doc,
-    getDoc
+    getDoc,
+    updateDoc
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
 // =======================
@@ -68,8 +69,31 @@ const editLastName =
 
 const editPhone =
     document.getElementById("edit-phone");   
+
+const toast = document.getElementById("toast");
     
     let currentUserData = null; // Store the current user data
+
+    // =======================
+// Toast
+// =======================
+
+function showToast(message, success = true) {
+
+    toast.textContent = message;
+
+    toast.className =
+        success
+            ? "show success"
+            : "show error";
+
+    setTimeout(() => {
+
+        toast.className = "";
+
+    }, 3000);
+
+}
 
 // =======================
 // Load Profile
@@ -113,9 +137,11 @@ onAuthStateChanged(auth, async (user) => {
             user.displayName ||
             "Customer";
 
-        profileName.textContent = fullName;
+        profileName.textContent =
+    data.firstName || "Customer";
 
-        profileFullName.textContent = fullName;
+profileFullName.textContent =
+    fullName;
 
         // -----------------------
         // Membership
@@ -206,6 +232,68 @@ cancelEditBtn?.addEventListener("click", () => {
 
 });
 
+// =======================
+// Save Profile
+// =======================
+
+saveProfileBtn?.addEventListener("click", async () => {
+
+    const firstName = editFirstName.value.trim();
+
+    const lastName = editLastName.value.trim();
+
+    const phone = editPhone.value.trim();
+
+    if (!firstName || !lastName) {
+
+        showToast("First name and last name are required.", false);
+
+        return;
+
+    }
+
+    try {
+
+        const user = auth.currentUser;
+
+        if (!user) return;
+
+        await updateDoc(
+            doc(db, "users", user.uid),
+            {
+                firstName,
+                lastName,
+                fullName: `${firstName} ${lastName}`,
+                phone
+            }
+        );
+
+        currentUserData.firstName = firstName;
+        currentUserData.lastName = lastName;
+        currentUserData.fullName = `${firstName} ${lastName}`;
+        currentUserData.phone = phone;
+
+        editModal.classList.add("hidden");
+
+        // Update the profile page instantly
+        profileName.textContent =
+    currentUserData.firstName;
+
+profileFullName.textContent =
+    currentUserData.fullName;
+
+        showToast("Profile updated successfully!");
+
+    } catch (error) {
+
+        console.error(error);
+
+        showToast("Failed to update profile.", false);
+
+    }
+
+});
+
 
 // =======================
 // Logout
@@ -230,7 +318,7 @@ logoutBtn?.addEventListener("click", async () => {
 
         console.error(error);
 
-        alert("Unable to logout.");
+        showToast("Unable to logout.", false);
 
     }
 
