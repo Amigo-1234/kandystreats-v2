@@ -266,12 +266,13 @@ saveProfileBtn?.addEventListener("click", async () => {
                 fullName: `${firstName} ${lastName}`,
                 phone
             }
+            
         );
 
-        currentUserData.firstName = firstName;
-        currentUserData.lastName = lastName;
-        currentUserData.fullName = `${firstName} ${lastName}`;
-        currentUserData.phone = phone;
+        profileName.textContent = firstName;
+
+profileFullName.textContent = `${firstName} ${lastName}`;
+
 
         editModal.classList.add("hidden");
 
