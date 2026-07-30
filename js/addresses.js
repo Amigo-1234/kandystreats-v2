@@ -11,8 +11,9 @@ import {
     deleteDoc,
     doc,
     updateDoc,
-    serverTimestamp
-}from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+    serverTimestamp,
+    writeBatch
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 // =======================
 // DOM Elements
 // =======================
@@ -49,6 +50,17 @@ const toast =
 
 const modalTitle =
 document.getElementById("address-modal-title");
+
+const deleteModal =
+document.getElementById("delete-modal");
+
+const cancelDeleteBtn =
+document.getElementById("cancel-delete");
+
+const confirmDeleteBtn =
+document.getElementById("confirm-delete");
+
+let addressToDelete = null;
 
 let editingAddressId = null; // Track the address being edited
 
@@ -251,42 +263,62 @@ async function loadAddresses(){
                     <h3>${data.label}</h3>
 
                     <p>${data.address}</p>
-
+ 
                 </div>
 
             </div>
 
-            ${
-                data.isDefault
-                    ? `<span class="default-badge">Default</span>`
-                    : ""
-            }
-
+            
+${
+    data.isDefault
+        ? `
+        <span class="default-badge">
+            <img src="icons/favorite.svg" alt="">
+             Default
+        </span>
+        `
+        : ""
+}
         </div>
 
-        <div class="address-actions">
+       <div class="address-actions">
 
-            <button
-                class="edit-address"
-                data-id="${doc.id}"
-                data-label="${data.label}"
-                data-address="${data.address}">
+    <button
+        class="edit-address"
+        data-id="${doc.id}"
+        data-label="${data.label}"
+        data-address="${data.address}">
 
-                <img src="icons/edit.svg" alt="">
-                Edit
+        <img src="icons/edit.svg">
+        Edit
 
-            </button>
+    </button>
 
-            <button
-                class="delete-address"
-                data-id="${doc.id}">
+    ${
+        !data.isDefault
+        ? `
+        <button
+            class="default-address"
+            data-id="${doc.id}">
 
-                <img src="icons/trash.svg" alt="">
-                Delete
+            <img src="icons/favorite.svg">
+            Make Default
 
-            </button>
+        </button>
+        `
+        : ""
+    }
 
-        </div>
+    <button
+        class="delete-address"
+        data-id="${doc.id}">
+
+        <img src="icons/trash.svg">
+        Delete
+
+    </button>
+
+</div>
 
     </div>
 
@@ -304,7 +336,9 @@ document
 
     button.addEventListener("click", () => {
 
-        deleteAddress(button.dataset.id);
+        addressToDelete = button.dataset.id;
+
+        deleteModal.classList.remove("hidden");
 
     });
 
@@ -334,6 +368,23 @@ modal.classList.remove("hidden");
 
 });
 
+// =======================
+// Default Listeners
+// =======================
+
+document
+.querySelectorAll(".default-address")
+.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        setDefaultAddress(button.dataset.id);
+
+    });
+
+});
+
+
 } // <-- End of loadAddresses()
 
 
@@ -347,11 +398,6 @@ async function deleteAddress(addressId){
 
     if(!user) return;
 
-    const confirmed = confirm(
-        "Delete this address?"
-    );
-
-    if(!confirmed) return;
 
     try{
 
@@ -385,3 +431,116 @@ async function deleteAddress(addressId){
     }
 
 }
+
+// =======================
+// Set Default Address
+// =======================
+
+async function setDefaultAddress(addressId) {
+
+    const user = auth.currentUser;
+
+    if (!user) return;
+
+    try {
+
+        const addressesRef = collection(
+            db,
+            "users",
+            user.uid,
+            "addresses"
+        );
+
+        const snapshot = await getDocs(addressesRef);
+
+        const batch = writeBatch(db);
+
+        snapshot.forEach((addressDoc) => {
+
+            batch.update(addressDoc.ref, {
+                isDefault: false
+            });
+
+        });
+
+        batch.update(
+
+            doc(
+                db,
+                "users",
+                user.uid,
+                "addresses",
+                addressId
+            ),
+
+            {
+                isDefault: true
+            }
+
+        );
+
+        await batch.commit();
+
+        showToast("Default address updated!");
+
+        await loadAddresses();
+
+    } catch (error) {
+
+        console.error(error);
+
+        showToast(
+            "Unable to update default address.",
+            false
+        );
+
+    }
+
+}
+
+
+// =======================
+// Delete Modal Events
+// =======================
+
+cancelDeleteBtn?.addEventListener("click", () => {
+
+    addressToDelete = null;
+
+    deleteModal.classList.add("hidden");
+
+});
+
+confirmDeleteBtn?.addEventListener("click", async () => {
+
+    if (!addressToDelete) return;
+
+    confirmDeleteBtn.disabled = true;
+
+    try {
+
+        await deleteAddress(addressToDelete);
+
+        addressToDelete = null;
+
+        deleteModal.classList.add("hidden");
+
+    } finally {
+
+        confirmDeleteBtn.disabled = false;
+
+    }
+
+});
+
+deleteModal?.addEventListener("click", (e) => {
+
+    if (e.target === deleteModal) {
+
+        addressToDelete = null;
+
+        deleteModal.classList.add("hidden");
+
+    }
+
+});

@@ -699,3 +699,210 @@ ADDRESSES PAGE
     border-left-color:#f59e0b;
 
 }
+
+.default-address{
+
+    flex:1;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    height:46px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(162,89,255,.18);
+
+    background:rgba(162,89,255,.08);
+
+    color:#c084fc;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    font-weight:600;
+
+}
+
+.default-address img{
+
+    width:18px;
+
+    filter:
+        brightness(0)
+        saturate(100%)
+        invert(55%)
+        sepia(29%)
+        saturate(1255%)
+        hue-rotate(245deg);
+
+}
+
+.default-address:hover{
+
+    background:rgba(162,89,255,.16);
+
+    border-color:rgba(162,89,255,.35);
+
+    transform:translateY(-2px);
+
+}
+
+.default-address:hover img {
+    opacity: 1;
+    transform: rotate(10deg) scale(1.1);
+}
+
+.default-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:rgba(168,85,247,.15);
+
+    border:1px solid rgba(168,85,247,.35);
+
+    color:#c084fc;
+
+    font-size:12px;
+    font-weight:700;
+
+    text-transform:uppercase;
+    letter-spacing:.5px;
+
+    box-shadow:
+        0 0 0 1px rgba(168,85,247,.12),
+        0 8px 20px rgba(168,85,247,.18);
+
+}
+
+.default-badge img{
+    width:14px;
+    height:14px;
+}
+
+.address-title p{
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.address-title{
+    flex:1;
+    min-width:0;
+}
+
+@media (max-width: 600px){
+
+    .address-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+    }
+
+    .address-actions{
+        width:100%;
+        flex-wrap:wrap;
+    }
+
+    .address-actions button{
+        flex:1 1 100%;
+    }
+
+}
+
+.delete-modal-card{
+
+    max-width:420px;
+
+    text-align:center;
+
+}
+
+.delete-icon{
+
+    width:80px;
+    height:80px;
+
+    margin:0 auto 20px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(239,68,68,.12);
+
+    border:1px solid rgba(239,68,68,.25);
+
+}
+
+.delete-icon img{
+
+    width:34px;
+
+    filter:
+        brightness(0)
+        saturate(100%)
+        invert(33%)
+        sepia(99%)
+        saturate(1696%)
+        hue-rotate(337deg);
+
+}
+
+.delete-modal-card h2{
+
+    color:#fff;
+
+    margin-bottom:12px;
+
+}
+
+.delete-modal-card p{
+
+    color:#bfb8c7;
+
+    line-height:1.6;
+
+    margin-bottom:28px;
+
+}
+
+.delete-btn{
+
+    padding:12px 24px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#ef4444;
+
+    color:#fff;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.delete-btn:hover{
+
+    background:#dc2626;
+
+    transform:translateY(-2px);
+
+}

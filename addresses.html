@@ -188,6 +188,59 @@ content="width=device-width, initial-scale=1.0">
 
     </div>
 
+    <!-- Delete Confirmation Modal -->
+
+<div
+    id="delete-modal"
+    class="modal hidden">
+
+    <div class="modal-card delete-modal-card">
+
+        <div class="delete-icon">
+
+            <img
+                src="icons/trash.svg"
+                alt="Delete">
+
+        </div>
+
+        <h2>
+
+            Delete Address?
+
+        </h2>
+
+        <p>
+
+            Are you sure you want to delete this address?
+            This action cannot be undone.
+
+        </p>
+
+        <div class="modal-footer">
+
+            <button
+                id="cancel-delete"
+                class="cancel-btn">
+
+                Cancel
+
+            </button>
+
+            <button
+                id="confirm-delete"
+                class="delete-btn">
+
+                Delete
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
 </main>
 
 <div id="toast"></div>
