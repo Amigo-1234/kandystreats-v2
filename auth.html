@@ -1,350 +1,106 @@
 <!DOCTYPE html>
 <html lang="en" data-page="auth">
-
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#09040a">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, viewport-fit=cover">
-
-    <title>Kandy's Treats • Authentication</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/auth.css">
-
+  <meta charset="UTF-8" />
+  <title>Account Access | Kandys Treats</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="styles.css" rel="stylesheet" />
+  <link rel="icon" href="/logo.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#e84c88">
 </head>
-
-<body>
-
-<div class="auth-page">
-
-<div class="auth-card">
-
-<img
-src="logo.png"
-class="auth-logo"
-alt="Kandy's Treats">
-
-<h1 id="auth-title">
-Welcome Back
-</h1>
-
-<p id="auth-subtitle">
-Sign in to continue ordering your favourite meals.
-</p>
-
-<!-- Tabs -->
-
-<div class="auth-tabs">
-
-<button
-type="button"
-id="login-tab"
-class="auth-tab active">
-
-Sign In
-
-</button>
-
-<button
-type="button"
-id="register-tab"
-class="auth-tab">
-
-Create Account
-
-</button>
-
-</div>
-
-<!-- ================= LOGIN ================= -->
-
-<form id="login-form">
-
-<div class="input-group">
-
-<label>Email Address</label>
-
-<div class="input-box">
-
-<input
-type="email"
-id="login-email"
-placeholder="example@gmail.com"
-required>
-
-<img
-src="icons/email.svg"
-class="input-icon"
-alt="">
-
-</div>
-
-</div>
-
-<div class="input-group">
-
-<label>Password</label>
-
-<div class="input-box">
-
-<input
-type="password"
-id="login-password"
-placeholder="Enter your password"
-required>
-
-<button
-type="button"
-class="password-toggle">
-
-<img
-src="icons/eye.svg"
-class="eye-icon"
-alt="">
-
-</button>
-
-</div>
-
-</div>
-
-<div class="auth-extra">
-
-<a href="#" id="forgot-password">
-
-Forgot Password?
-
-</a>
-
-</div>
-
-<button
-id="login-btn"
-class="btn-primary"
-type="submit">
-
-Sign In
-
-</button>
-
-<div class="divider">
-
-<span>OR</span>
-
-</div>
-
-<!-- Login -->
-<button
-type="button"
-id="google-login-btn"
-class="google-btn">
-
-<img
-src="icons/Google.svg"
-alt="Google">
-
-Continue with Google
-
-</button>
-
-</form>
-
-<!-- ================= REGISTER ================= -->
-
-<form
-id="register-form"
-class="hidden">
-
-<div class="name-row">
-
-<div class="input-group">
-
-<label>First Name</label>
-
-<div class="input-box">
-
-<input
-type="text"
-id="first-name"
-placeholder="John"
-required>
-
-<img
-src="icons/user.svg"
-class="input-icon"
-alt="">
-
-</div>
-
-</div>
-
-<div class="input-group">
-
-<label>Last Name</label>
-
-<div class="input-box">
-
-<input
-type="text"
-id="last-name"
-placeholder="Doe"
-required>
-
-<img
-src="icons/user.svg"
-class="input-icon"
-alt="">
-
-</div>
-
-</div>
-
-</div>
-
-<div class="input-group">
-
-<label>Email Address</label>
-
-<div class="input-box">
-
-<input
-type="email"
-id="register-email"
-placeholder="example@gmail.com"
-required>
-
-<img
-src="icons/email.svg"
-class="input-icon"
-alt="">
-
-</div>
-
-</div>
-
-<div class="input-group">
-
-<label>Phone Number</label>
-
-<div class="input-box">
-
-<input
-type="tel"
-id="register-phone"
-placeholder="+234..."
-required>
-
-<img
-src="icons/phone.svg"
-class="input-icon"
-alt="">
-
-</div>
-
-</div>
-
-<div class="input-group">
-
-<label>Password</label>
-
-<div class="input-box">
-
-<input
-type="password"
-id="register-password"
-placeholder="Create password"
-required>
-
-<button
-type="button"
-class="password-toggle">
-
-<img
-src="icons/eye.svg"
-class="eye-icon"
-alt="">
-
-</button>
-
-</div>
-
-</div>
-
-<div class="input-group">
-
-<label>Confirm Password</label>
-
-<div class="input-box">
-
-<input
-type="password"
-id="confirm-password"
-placeholder="Confirm password"
-required>
-
-<button
-type="button"
-class="password-toggle">
-
-<img
-src="icons/eye.svg"
-class="eye-icon"
-alt="">
-
-</button>
-
-</div>
-
-</div>
-
-<button id="register-btn"
-class="btn-primary"
-type="submit">
-
-Create Account
-
-</button>
-
-<div class="divider">
-
-<span>OR</span>
-
-</div>
-
-<!-- Register -->
-<button
-type="button"
-id="google-register-btn"
-class="google-btn">
-
-<img
-src="icons/Google.svg"
-alt="Google">
-
-Continue with Google
-
-</button>
-
-</form>
-
-</div>
-
-</div>
-
-<!-- Toast Notification -->
-<div id="toast"></div>
-<script type="module" src="js/auth.js"></script>
-
+<body class="page page-auth">
+  <main class="auth-shell">
+    <section class="auth-card glass-card">
+      <a href="home.html" class="auth-logo" aria-label="Kandys Treats home">
+        <img src="logo.png" alt="Kandys Treats" />
+      </a>
+
+      <div class="auth-heading">
+        <span class="about-eyebrow">Customer Account</span>
+        <h1>Welcome to Kandys Treats</h1>
+        <p>Sign in to order faster, track meals, save addresses, and use your wallet.</p>
+      </div>
+
+      <div class="auth-tabs" role="tablist">
+        <button class="is-active" type="button" data-auth-tab="login">Login</button>
+        <button type="button" data-auth-tab="signup">Sign up</button>
+        <button type="button" data-auth-tab="forgot">Reset</button>
+      </div>
+
+      <p id="auth-message" class="auth-message" hidden></p>
+
+      <button class="btn btn-google btn-block" id="google-signin" type="button">
+        <span class="google-mark" aria-hidden="true">G</span>
+        <span>Continue with Google</span>
+      </button>
+
+      <div class="auth-divider" aria-hidden="true">
+        <span></span>
+        <strong>or</strong>
+        <span></span>
+      </div>
+
+      <form id="login-form" class="auth-panel" data-auth-panel="login">
+        <div class="field-group">
+          <label for="login-email">Email</label>
+          <input id="login-email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="field-group">
+          <label for="login-password">Password</label>
+          <input id="login-password" name="password" type="password" autocomplete="current-password" required />
+        </div>
+        <label class="check-row">
+          <input name="remember" type="checkbox" checked />
+          <span>Remember me on this device</span>
+        </label>
+        <button class="btn btn-primary btn-block" type="submit">Login</button>
+      </form>
+
+      <form id="signup-form" class="auth-panel" data-auth-panel="signup" hidden>
+        <div class="field-grid two">
+          <div class="field-group">
+            <label for="signup-name">Full name</label>
+            <input id="signup-name" name="displayName" autocomplete="name" required />
+          </div>
+          <div class="field-group">
+            <label for="signup-phone">Phone</label>
+            <input id="signup-phone" name="phone" autocomplete="tel" inputmode="tel" required />
+          </div>
+        </div>
+        <div class="field-group">
+          <label for="signup-email">Email</label>
+          <input id="signup-email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="field-grid two">
+          <div class="field-group">
+            <label for="signup-password">Password</label>
+            <input id="signup-password" name="password" type="password" autocomplete="new-password" minlength="6" required />
+          </div>
+          <div class="field-group">
+            <label for="signup-confirm">Confirm password</label>
+            <input id="signup-confirm" name="confirmPassword" type="password" autocomplete="new-password" minlength="6" required />
+          </div>
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">Create account</button>
+      </form>
+
+      <form id="forgot-form" class="auth-panel" data-auth-panel="forgot" hidden>
+        <div class="field-group">
+          <label for="forgot-email">Account email</label>
+          <input id="forgot-email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">Send reset link</button>
+      </form>
+
+      <div class="auth-foot">
+        <a href="home.html">Back home</a>
+        <a href="contact.html">Need help?</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast-container" aria-live="polite" aria-atomic="true"></div>
+  <script type="module" src="js/auth-page.js"></script>
 </body>
-
 </html>

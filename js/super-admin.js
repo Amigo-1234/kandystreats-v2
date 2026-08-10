@@ -101,7 +101,7 @@ onAuthStateChanged(auth, async user => {
 try {
    snap = await getDoc(doc(db, "users", user.uid));
 
-if (!snap.exists() || snap.data().role !== "superAdmin") {
+if (!snap.exists() || !["superAdmin", "super-admin", "owner"].includes(snap.data().role)) {
   alert("Not authorized");
   await signOut(auth);
   return;

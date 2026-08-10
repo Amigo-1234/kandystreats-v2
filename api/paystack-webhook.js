@@ -4,12 +4,22 @@ import crypto from "crypto";
 if (!admin.apps.length) {
   admin.initializeApp({
     credential: admin.credential.cert(
-      JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT)
+      JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT),
     ),
   });
 }
 
 const db = admin.firestore();
+
+function paystackSummary(body) {
+  return {
+    event: body?.event || null,
+    reference: body?.data?.reference || null,
+    status: body?.data?.status || null,
+    amount: body?.data?.amount || null,
+    currency: body?.data?.currency || null,
+  };
+}
 
 export default async function handler(req, res) {
   const receivedAt = admin.firestore.FieldValue.serverTimestamp();
@@ -20,7 +30,7 @@ export default async function handler(req, res) {
       provider: "paystack",
       verified: false,
       receivedAt,
-      payload: req.body,
+      payload: paystackSummary(req.body),
     });
 
     const signature = req.headers["x-paystack-signature"];
@@ -52,7 +62,7 @@ export default async function handler(req, res) {
     const orderId =
       event.data.metadata?.orderId ||
       event.data.metadata?.custom_fields?.find(
-        f => f.variable_name === "orderId"
+        (field) => field.variable_name === "orderId",
       )?.value;
 
     if (!orderId) {
@@ -88,10 +98,10 @@ export default async function handler(req, res) {
       reason: null,
     });
 
-    console.log("✅ Paystack payment confirmed:", orderId);
+    console.info("Paystack payment confirmed:", orderId);
     return res.status(200).send("OK");
   } catch (err) {
-    console.error("🔥 Paystack webhook error:", err);
+    console.error("Paystack webhook error:", err);
 
     if (logRef) {
       await logRef.update({

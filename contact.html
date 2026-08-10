@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" data-page="contact">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact | Kandys Treats Eatery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="styles.css" rel="stylesheet" />
+  <link rel="icon" href="/logo.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#e84c88">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body class="page page-contact">
+
+  <div id="announcement-bar" class="top-announcement">
+  <div class="announcement-viewport">
+    <div class="announcement-track">
+    <span class="announcement-content">Welcome to Kandys Treats 🍭</span>
+    <span class="announcement-content">Welcome to Kandys Treats 🍭</span>
+  </div>
+  </div>
+  </div>
+
+
+  <div class="page-shell">
+    <header class="section fade-in-up">
+      <h1>Contact & Visit</h1>
+      <p>We’d love to serve you. Reach out or stop by.</p>
+    </header>
+
+    <main class="section section-stack fade-in-up delay-1">
+      <section class="glass-card interactive-card">
+        <h2>Talk to us</h2>
+        <p>Bookings, catering, feedback — we respond fast.</p>
+
+        <form id="contact-form" class="checkout-form">
+          <div class="field-group">
+            <label for="contact-name">Name</label>
+            <input id="contact-name" required autocomplete="name" />
+          </div>
+          <div class="field-group">
+            <label for="contact-phone">Phone</label>
+            <input id="contact-phone" required inputmode="tel" autocomplete="tel" />
+          </div>
+          <div class="field-group">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" rows="3" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">
+            Send Message
+          </button>
+        </form>
+      </section>
+
+      <section class="glass-card interactive-card">
+        <h2>Location & Hours</h2>
+        <div class="info-list">
+          <div>
+            <span class="label">Phone</span>
+            <a href="tel:+2348134641796" class="value link-inline">+234 813 464 1796</a>
+          </div>
+          <div>
+            <span class="label">Open</span>
+            <span class="value">Daily • 9:00AM – 10:30PM</span>
+          </div>
+          <div>
+            <span class="label">Service</span>
+            <span class="value">Pickup • Delivery • Small events</span>
+          </div>
+        </div>
+        <div class="map-placeholder map-placeholder-sm">
+          <div class="map-grid"></div>
+          <div class="map-marker"></div>
+          <span class="map-label">Kandy's Treats, Opposite Famkky Hostel, EKSU Satellite Gate Area, Campus Inner Road, Iworoko 362103, Ekiti</span>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <nav class="bottom-nav glass-card">
+  <a href="home.html" class="bottom-nav-item" data-page="home">
+    <svg class="nav-icon" viewBox="0 0 24 24">
+      <path d="M3 10.5L12 3l9 7.5V21h-6v-6H9v6H3z"/>
+    </svg>
+    <span class="nav-label">Home</span>
+  </a>
+
+  <a href="menu.html" class="bottom-nav-item" data-page="menu">
+    <svg class="nav-icon" viewBox="0 0 24 24">
+      <path d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+    <span class="nav-label">Menu</span>
+  </a>
+
+  <a href="cart.html" class="bottom-nav-item" data-page="cart">
+    <svg class="nav-icon" viewBox="0 0 24 24">
+      <path d="M6 6h15l-2 9H7z"/>
+      <circle cx="9" cy="20" r="1.5"/>
+      <circle cx="18" cy="20" r="1.5"/>
+    </svg>
+    <span class="nav-label">Cart</span>
+    <span class="bottom-nav-badge js-cart-count">0</span>
+  </a>
+
+  <a href="contact.html" class="bottom-nav-item is-active" data-page="contact">
+  <svg class="nav-icon" viewBox="0 0 24 24">
+    <path
+      d="M22 16.92v3a2 2 0 0 1-2.18 2
+      A19.86 19.86 0 0 1 3 5.18
+      A2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.72
+      c.2 1.38.6 2.7 1.18 3.92
+      a2 2 0 0 1-.45 2.11L9.91 12.91
+      a16 16 0 0 0 6.18 6.18
+      l2.16-2.16a2 2 0 0 1 2.11-.45
+      c1.22.58 2.54.98 3.92 1.18
+      a2 2 0 0 1 1.72 2z"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+  <span class="nav-label">Contact</span>
+</a>
+</nav>
+
+  <div class="toast-container" aria-live="polite" aria-atomic="true"></div>
+  <script src="app.js" type="module"></script>
+  <script src="js/customer-nav.js" type="module"></script>
+</body>
+</html>
+

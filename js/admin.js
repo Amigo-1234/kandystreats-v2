@@ -182,7 +182,7 @@ onAuthStateChanged(auth, async (user) => {
   }
 
   const { role } = snap.data();
-  if (!["staff", "superAdmin"].includes(role)) {
+  if (!["staff", "admin", "superAdmin", "super-admin", "owner"].includes(role)) {
     await signOut(auth);
     return location.href = "admin-login.html";
   }

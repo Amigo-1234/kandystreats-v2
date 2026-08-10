@@ -5,7 +5,8 @@
   <title>Complete Payment | Kandys Treats</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="/logo.png">
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#e84c88">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,6 +20,13 @@
 
       <h1 class="pay-title">Complete Payment</h1>
 
+      <nav class="checkout-progress" aria-label="Checkout progress">
+        <span class="is-complete">Cart</span>
+        <span class="is-complete">Review</span>
+        <span class="is-active">Payment</span>
+        <span>Track</span>
+      </nav>
+
       <div class="pay-order-box">
         <p class="pay-order-id">
           Order <strong id="pay-order-id">—</strong>
@@ -30,6 +38,7 @@
         </div>
       </div>
 
+      <p id="pay-status" class="pay-status" hidden></p>
 
       <div class="pay-buttons">
         <button id="pay-paystack" class="btn btn-primary pay-btn">
@@ -53,15 +62,6 @@
 
     </section>
   </main>
-
- <!-- Paystack MUST be first and NOT deferred -->
-<script src="https://js.paystack.co/v1/inline.js"></script>
-
-<!-- Paystack handler (NON-module) -->
-<script src="paystack.js"></script>
-
-<!-- Flutterwave -->
-<script src="https://checkout.flutterwave.com/v3.js"></script>
 
 <!-- App logic (module is fine here) -->
 <script type="module" src="pay.js"></script>

@@ -5,6 +5,7 @@ window.startPaystackPayment = function ({
   email,
   amount,
   orderId,
+  reference,
   metadata,
   onSuccess,
   onClose
@@ -14,12 +15,18 @@ window.startPaystackPayment = function ({
     return;
   }
 
+  const ref = reference || orderId;
+  if (!ref) {
+    alert("Payment reference missing");
+    return;
+  }
+
   const handler = PaystackPop.setup({
     key,
     email,
     amount,
     currency: "NGN",
-    ref: orderId,
+    ref,
     metadata,
     callback: function (response) {
       onSuccess(response.reference);

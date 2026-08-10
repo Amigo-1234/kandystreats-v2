@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" data-page="account">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Account | Kandys Treats</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="styles.css" rel="stylesheet" />
+  <link rel="icon" href="/logo.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#e84c88">
+</head>
+<body class="page page-account">
+  <div class="account-shell">
+    <header class="account-hero glass-card">
+      <a href="home.html" class="brand-logo">
+        <img src="logo.png" alt="Kandys Treats Logo" />
+      </a>
+      <div class="account-hero-copy">
+        <span class="about-eyebrow">My Dashboard</span>
+        <h1>Hello, <span data-user-name>Customer</span></h1>
+        <p data-user-email>Loading account...</p>
+        <nav class="account-quick-nav" aria-label="Customer navigation">
+          <a href="home.html">Home</a>
+          <a href="menu.html">Menu</a>
+          <a href="cart.html">Cart</a>
+          <a href="track.html">Track</a>
+        </nav>
+      </div>
+      <button class="btn btn-outline btn-sm" id="logout-btn" type="button">Logout</button>
+    </header>
+
+    <section id="email-verify-banner" class="verify-banner glass-card" hidden>
+      <div>
+        <strong>Verify your email</strong>
+        <p>Verify your account email to keep wallet and order notifications reliable.</p>
+      </div>
+      <button class="btn btn-primary btn-sm" id="resend-verification" type="button">Resend link</button>
+    </section>
+
+    <div id="account-loading" class="account-loading glass-card">
+      <div class="loader-ring"></div>
+      <p>Loading your dashboard...</p>
+    </div>
+
+    <main id="account-content" class="account-layout" hidden>
+      <aside class="account-tabs glass-card" aria-label="Account sections">
+        <button class="is-active" type="button" data-account-tab="overview">Overview</button>
+        <button type="button" data-account-tab="profile">Profile</button>
+        <button type="button" data-account-tab="wallet">Wallet</button>
+        <button type="button" data-account-tab="orders">Orders</button>
+        <button type="button" data-account-tab="addresses">Addresses</button>
+        <button type="button" data-account-tab="favourites">Favourites</button>
+        <button type="button" data-account-tab="reviews">Reviews</button>
+        <button type="button" data-account-tab="notifications">
+          Notifications
+          <span class="tab-badge" data-notification-count hidden>0</span>
+        </button>
+        <button type="button" data-account-tab="support">Support</button>
+      </aside>
+
+      <section class="account-panels">
+        <section class="account-panel" data-account-panel="overview">
+          <div class="dashboard-grid">
+            <article class="dashboard-stat glass-card">
+              <span>Wallet Balance</span>
+              <strong data-wallet-balance>NGN 0</strong>
+            </article>
+            <article class="dashboard-stat glass-card">
+              <span>Current Orders</span>
+              <strong data-current-orders>0</strong>
+            </article>
+            <article class="dashboard-stat glass-card">
+              <span>Completed Orders</span>
+              <strong data-completed-orders>0</strong>
+            </article>
+            <article class="dashboard-stat glass-card">
+              <span>Favourite Meals</span>
+              <strong data-favourite-count>0</strong>
+            </article>
+          </div>
+
+          <section class="glass-card dashboard-section quick-actions-panel">
+            <div class="section-header inline">
+              <h2>Quick Actions</h2>
+              <span class="checkout-assist">Built for faster reorders</span>
+            </div>
+            <div class="quick-actions-grid">
+              <a class="btn btn-primary btn-sm" href="menu.html">Order meal</a>
+              <button class="btn btn-outline btn-sm" type="button" data-account-tab="wallet">Fund wallet</button>
+              <button class="btn btn-outline btn-sm" type="button" data-account-tab="addresses">Add address</button>
+              <a class="btn btn-outline btn-sm" href="track.html">Track order</a>
+            </div>
+          </section>
+
+          <div class="dashboard-split">
+            <section class="glass-card dashboard-section">
+              <div class="section-header inline">
+                <h2>Live Orders</h2>
+                <button class="btn btn-primary btn-sm" id="quick-order-btn" type="button">Order now</button>
+              </div>
+              <div class="dashboard-list" data-orders-list="current"></div>
+            </section>
+
+            <section class="glass-card dashboard-section">
+              <div class="section-header inline">
+                <h2>Recent Notifications</h2>
+                <button class="btn btn-outline btn-sm" type="button" data-account-tab="notifications">View all</button>
+              </div>
+              <div class="dashboard-list" data-notifications-list></div>
+            </section>
+          </div>
+
+          <section class="glass-card dashboard-section analytics-placeholder">
+            <div>
+              <h2>Ordering Activity</h2>
+              <p class="checkout-assist">Analytics-ready space for loyalty, spend, and reorder patterns.</p>
+            </div>
+            <div class="activity-bars" aria-hidden="true">
+              <span style="--h: 38%"></span>
+              <span style="--h: 62%"></span>
+              <span style="--h: 45%"></span>
+              <span style="--h: 78%"></span>
+              <span style="--h: 56%"></span>
+              <span style="--h: 86%"></span>
+              <span style="--h: 64%"></span>
+            </div>
+          </section>
+        </section>
+
+        <section class="account-panel" data-account-panel="profile" hidden>
+          <section class="glass-card dashboard-section">
+            <h2>Profile Management</h2>
+            <form id="profile-form" class="dashboard-form">
+              <div class="field-grid two">
+                <div class="field-group">
+                  <label for="profile-name">Full name</label>
+                  <input id="profile-name" name="displayName" autocomplete="name" required />
+                </div>
+                <div class="field-group">
+                  <label for="profile-phone">Phone</label>
+                  <input id="profile-phone" name="phone" autocomplete="tel" />
+                </div>
+              </div>
+              <div class="field-group">
+                <label for="profile-email">Email</label>
+                <input id="profile-email" name="email" type="email" disabled />
+              </div>
+              <button class="btn btn-primary" type="submit">Save profile</button>
+            </form>
+          </section>
+
+          <section class="glass-card dashboard-section">
+            <h2>Change Password</h2>
+            <form id="password-form" class="dashboard-form">
+              <div class="field-group">
+                <label for="current-password">Current password</label>
+                <input id="current-password" name="currentPassword" type="password" autocomplete="current-password" required />
+              </div>
+              <div class="field-grid two">
+                <div class="field-group">
+                  <label for="new-password">New password</label>
+                  <input id="new-password" name="newPassword" type="password" autocomplete="new-password" minlength="6" required />
+                </div>
+                <div class="field-group">
+                  <label for="confirm-password">Confirm password</label>
+                  <input id="confirm-password" name="confirmPassword" type="password" autocomplete="new-password" minlength="6" required />
+                </div>
+              </div>
+              <button class="btn btn-outline" type="submit">Update password</button>
+            </form>
+          </section>
+        </section>
+
+        <section class="account-panel" data-account-panel="wallet" hidden>
+          <section class="glass-card dashboard-section">
+            <div class="wallet-hero">
+              <div>
+                <span class="about-eyebrow">Wallet</span>
+                <h2 data-wallet-balance>NGN 0</h2>
+                <p>Pay for orders with your wallet and receive refunds here.</p>
+              </div>
+              <form id="wallet-fund-form" class="wallet-fund-form">
+                <input name="amount" type="number" min="100" step="50" placeholder="Amount" required />
+                <select name="provider">
+                  <option value="paystack">Paystack</option>
+                  <option value="flutterwave">Flutterwave</option>
+                </select>
+                <button class="btn btn-primary" type="submit">Fund wallet</button>
+                <p id="wallet-fund-status" class="wallet-fund-status" aria-live="polite"></p>
+              </form>
+            </div>
+          </section>
+
+          <section class="glass-card dashboard-section">
+            <h2>Transaction History</h2>
+            <div id="transaction-list" class="dashboard-list"></div>
+          </section>
+        </section>
+
+        <section class="account-panel" data-account-panel="orders" hidden>
+          <div class="dashboard-split">
+            <section class="glass-card dashboard-section">
+              <h2>Current Orders</h2>
+              <div class="dashboard-list" data-orders-list="current"></div>
+            </section>
+            <section class="glass-card dashboard-section">
+              <h2>Completed Orders</h2>
+              <div class="dashboard-list" data-orders-list="completed"></div>
+            </section>
+          </div>
+          <section class="glass-card dashboard-section">
+            <h2>Order History</h2>
+            <div class="dashboard-list" data-orders-list="all"></div>
+          </section>
+        </section>
+
+        <section class="account-panel" data-account-panel="addresses" hidden>
+          <section class="glass-card dashboard-section">
+            <h2>Saved Delivery Addresses</h2>
+            <form id="address-form" class="dashboard-form">
+              <div class="field-grid two">
+                <div class="field-group">
+                  <label for="address-label">Label</label>
+                  <input id="address-label" name="label" placeholder="Hostel, Office, Home" />
+                </div>
+                <div class="field-group">
+                  <label for="address-recipient">Recipient</label>
+                  <input id="address-recipient" name="recipientName" autocomplete="name" />
+                </div>
+              </div>
+              <div class="field-group">
+                <label for="address-phone">Phone</label>
+                <input id="address-phone" name="phone" autocomplete="tel" />
+              </div>
+              <div class="field-group">
+                <label for="address-text">Address</label>
+                <textarea id="address-text" name="address" rows="2" required></textarea>
+              </div>
+              <div class="field-group">
+                <label for="address-notes">Delivery notes</label>
+                <textarea id="address-notes" name="notes" rows="2"></textarea>
+              </div>
+              <button class="btn btn-primary" type="submit">Save address</button>
+              <p id="address-form-status" class="form-status" aria-live="polite"></p>
+            </form>
+          </section>
+          <section class="glass-card dashboard-section">
+            <div class="field-group">
+              <label for="default-address-select">Default address</label>
+              <select id="default-address-select"></select>
+            </div>
+            <div id="addresses-list" class="dashboard-list"></div>
+          </section>
+        </section>
+
+        <section class="account-panel" data-account-panel="favourites" hidden>
+          <section class="glass-card dashboard-section">
+            <div class="section-header inline">
+              <h2>Favourite Meals</h2>
+              <a class="btn btn-primary btn-sm" href="menu.html">Add from menu</a>
+            </div>
+            <div id="favourites-list" class="dashboard-list"></div>
+          </section>
+        </section>
+
+        <section class="account-panel" data-account-panel="reviews" hidden>
+          <section class="glass-card dashboard-section">
+            <h2>Meal Reviews</h2>
+            <form id="review-form" class="dashboard-form">
+              <div class="field-grid two">
+                <div class="field-group">
+                  <label for="review-menu">Meal</label>
+                  <select id="review-menu" name="menuId" required></select>
+                </div>
+                <div class="field-group">
+                  <label for="review-rating">Rating</label>
+                  <select id="review-rating" name="rating" required>
+                    <option value="">Choose rating</option>
+                    <option value="5">5 - Excellent</option>
+                    <option value="4">4 - Very good</option>
+                    <option value="3">3 - Good</option>
+                    <option value="2">2 - Fair</option>
+                    <option value="1">1 - Poor</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field-group">
+                <label for="review-comment">Review</label>
+                <textarea id="review-comment" name="comment" rows="3" placeholder="Tell us how the food tasted"></textarea>
+              </div>
+              <button class="btn btn-primary" type="submit">Save review</button>
+            </form>
+          </section>
+          <section class="glass-card dashboard-section">
+            <h2>Your Reviews</h2>
+            <div id="reviews-list" class="dashboard-list"></div>
+          </section>
+        </section>
+
+        <section class="account-panel" data-account-panel="notifications" hidden>
+          <section class="glass-card dashboard-section">
+            <div class="section-header inline">
+              <h2>Notifications</h2>
+              <button class="btn btn-outline btn-sm" id="mark-all-read" type="button">Mark all read</button>
+            </div>
+            <div class="dashboard-list" data-notifications-list></div>
+          </section>
+        </section>
+
+        <section class="account-panel" data-account-panel="support" hidden>
+          <section class="glass-card dashboard-section">
+            <h2>Contact Support</h2>
+            <div class="support-actions account-support-actions">
+              <a href="tel:+2348134641796" class="btn btn-outline">Call support</a>
+              <a href="https://wa.me/+2348134641796" target="_blank" rel="noopener" class="btn btn-primary">Chat on WhatsApp</a>
+            </div>
+            <form id="support-form" class="dashboard-form">
+              <div class="field-group">
+                <label for="support-subject">Subject</label>
+                <input id="support-subject" name="subject" required />
+              </div>
+              <div class="field-group">
+                <label for="support-message">Message</label>
+                <textarea id="support-message" name="message" rows="4" required></textarea>
+              </div>
+              <button class="btn btn-primary" type="submit">Send message</button>
+            </form>
+          </section>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <nav class="bottom-nav glass-card">
+    <a href="home.html" class="bottom-nav-item" data-page="home">
+      <svg class="nav-icon" viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5V21h-6v-6H9v6H3z"/></svg>
+      <span class="nav-label">Home</span>
+    </a>
+    <a href="menu.html" class="bottom-nav-item" data-page="menu">
+      <svg class="nav-icon" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <span class="nav-label">Menu</span>
+    </a>
+    <a href="cart.html" class="bottom-nav-item" data-page="cart">
+      <svg class="nav-icon" viewBox="0 0 24 24"><path d="M6 6h15l-2 9H7z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+      <span class="nav-label">Cart</span>
+      <span class="bottom-nav-badge js-cart-count">0</span>
+    </a>
+    <a href="track.html" class="bottom-nav-item" data-page="track">
+      <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 21s6-5.3 6-10a6 6 0 1 0-12 0c0 4.7 6 10 6 10z"/><circle cx="12" cy="11" r="2.5"/></svg>
+      <span class="nav-label">Track</span>
+    </a>
+  </nav>
+
+  <div class="toast-container" aria-live="polite" aria-atomic="true"></div>
+  <script type="module" src="js/customer-nav.js"></script>
+  <script type="module" src="js/customer-dashboard.js"></script>
+</body>
+</html>

@@ -1,4 +1,10 @@
 {
+  "scripts": {
+    "check:firebase": "node scripts/check-firebase-deployment.js",
+    "deploy:backend": "npx --yes firebase-tools@15.26.0 deploy --only functions,firestore:rules,firestore:indexes,storage --project kandystreat-840b1",
+    "deploy:hosting": "npx --yes firebase-tools@15.26.0 deploy --only hosting --project kandystreat-840b1",
+    "deploy:all": "npx --yes firebase-tools@15.26.0 deploy --project kandystreat-840b1"
+  },
   "dependencies": {
     "firebase-admin": "^13.6.1"
   }

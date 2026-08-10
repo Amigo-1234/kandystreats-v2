@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <title>Cart & Checkout | Kandys Treats Eatery</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="css/styles.css" rel="stylesheet" />
+  <link href="styles.css" rel="stylesheet" />
+  <link rel="icon" href="/logo.png">
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#e84c88">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -12,6 +13,7 @@
   
 </head>
 
+<body class="page page-cart">
 <div id="announcement-bar" class="top-announcement">
   <div class="announcement-viewport">
     <div class="announcement-track">
@@ -24,6 +26,12 @@
     <header class="section fade-in-up">
       <h1>Your Order</h1>
       <p>Review your treats and complete your order.</p>
+      <nav class="checkout-progress" aria-label="Checkout progress">
+        <span class="is-active">Cart</span>
+        <span>Review</span>
+        <span>Payment</span>
+        <span>Track</span>
+      </nav>
     </header>
 
     <main class="section section-stack fade-in-up delay-1">
@@ -54,13 +62,22 @@
             <span id="summary-delivery">₦800</span>
           </div>
 
+          <div class="summary-row summary-discount" id="summary-discount-row" hidden>
+            <span>Coupon Discount</span>
+            <span id="summary-discount">-â‚¦0</span>
+          </div>
+          <div class="summary-row">
+            <span>Estimated Time</span>
+            <span id="summary-eta">20 - 35 mins</span>
+          </div>
+
           <div class="summary-row summary-total">
             <span>Total</span>
             <span id="summary-total">₦0</span>
           </div>
         </div>
 
-        <form id="checkout-form" class="checkout-form">
+        <form id="checkout-form" class="checkout-form" novalidate>
           <div class="field-group">
             <label for="customer-name">Full name</label>
             <input id="customer-name" name="name" required autocomplete="name" />
@@ -75,12 +92,12 @@
               autocomplete="tel"
               placeholder="+234..."
             />
-            <label for="customer-email">Email (to track your order)</label>
+            <label for="customer-email">Account email</label>
               <input
                 type="email"
                 id="customer-email"
-                placeholder="Enter email to track your order"
-                required
+                placeholder="Login to use your account email"
+                readonly
               />
 
           </div>
@@ -91,9 +108,46 @@
               <button type="button" class="toggle-option" data-fulfilment="pickup">Pickup</button>
             </div>
           </div>
-          <div class="field-group" id="address-field">
-            <label for="customer-address">Delivery address</label>
-            <textarea id="customer-address" name="address" rows="2" required></textarea>
+          <div class="field-group checkout-address-field" id="address-field">
+            <div class="checkout-address-head">
+              <div>
+                <label>Delivery address</label>
+                <p class="checkout-assist">Choose a saved address from your account.</p>
+              </div>
+              <button class="btn btn-outline btn-sm" id="checkout-add-address-toggle" type="button">Add address</button>
+            </div>
+            <input id="customer-address-id" name="addressId" type="hidden" />
+            <textarea id="customer-address" name="address" rows="2" hidden></textarea>
+            <select id="customer-saved-address" hidden>
+              <option value="">Choose address</option>
+            </select>
+            <div id="checkout-address-list" class="checkout-address-list" aria-live="polite"></div>
+            <p id="selected-address-summary" class="selected-address-summary" hidden></p>
+            <div id="checkout-address-form" class="checkout-address-form" hidden>
+              <div class="field-grid two">
+                <div class="field-group">
+                  <label for="checkout-address-label">Label</label>
+                  <input id="checkout-address-label" name="label" placeholder="Home, Office, Hostel" />
+                </div>
+                <div class="field-group">
+                  <label for="checkout-address-recipient">Recipient</label>
+                  <input id="checkout-address-recipient" name="recipientName" autocomplete="name" />
+                </div>
+              </div>
+              <div class="field-group">
+                <label for="checkout-address-phone">Phone</label>
+                <input id="checkout-address-phone" name="phone" autocomplete="tel" inputmode="tel" />
+              </div>
+              <div class="field-group">
+                <label for="checkout-address-text">Address</label>
+                <textarea id="checkout-address-text" name="address" rows="2"></textarea>
+              </div>
+              <div class="field-group">
+                <label for="checkout-address-notes">Delivery notes</label>
+                <textarea id="checkout-address-notes" name="notes" rows="2" placeholder="Gate code, landmark, preferred call time..."></textarea>
+              </div>
+              <button class="btn btn-primary btn-block" id="checkout-address-save" type="button">Save and use this address</button>
+            </div>
           </div>
           <div class="field-group">
             <label for="customer-notes">Order notes (optional)</label>
@@ -104,11 +158,19 @@
               placeholder="E.g. less pepper, extra plantain, call on arrival..."
             ></textarea>
           </div>
+          <div class="field-group">
+            <label for="coupon-code">Coupon code</label>
+            <div class="coupon-row">
+              <input id="coupon-code" name="coupon" autocomplete="off" placeholder="WELCOME5 or KANDY10" />
+              <button class="btn btn-outline btn-sm" id="apply-coupon" type="button">Apply</button>
+            </div>
+            <p class="checkout-assist" id="coupon-message"></p>
+          </div>
 
           <button
             class="btn btn-primary btn-block"
             id="save-order-btn">
-            Save this order
+            Save order for review
           </button>
 
           <button
@@ -186,7 +248,8 @@
 </nav>
 
   <div class="toast-container" aria-live="polite" aria-atomic="true"></div>
-  <script src="js/app.js" type="module"></script>
+  <script src="app.js" type="module"></script>
+  <script src="js/customer-nav.js" type="module"></script>
 </body>
 </html>
 

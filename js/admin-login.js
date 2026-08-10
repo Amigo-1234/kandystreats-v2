@@ -38,6 +38,10 @@ function showError(msg) {
   alert(msg); // later we can replace with toast
 }
 
+function hasAdminAccess(role) {
+  return ["staff", "admin", "superAdmin", "super-admin", "owner"].includes(role);
+}
+
 /* ================= AUTH FLOW ================= */
 
 // If already logged in → go straight to admin
@@ -55,7 +59,7 @@ onAuthStateChanged(auth, async (user) => {
 
     const { role } = snap.data();
 
-    if (role === "staff" || role === "superAdmin") {
+    if (hasAdminAccess(role)) {
       window.location.href = "admin.html";
     } else {
       await auth.signOut();
@@ -93,7 +97,7 @@ form.addEventListener("submit", async (e) => {
 
     const { role } = snap.data();
 
-    if (role !== "staff" && role !== "superAdmin") {
+    if (!hasAdminAccess(role)) {
       showError("Access denied");
       await auth.signOut();
       return;

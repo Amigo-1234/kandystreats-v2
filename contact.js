@@ -4,8 +4,15 @@ import {
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
-import { db } from "./firebase.js"; 
-// or use window.db if you already exposed it
+import { db } from "./js/firebase-core.js";
+
+const showToast = (message) => {
+  if (window.showToast) {
+    window.showToast(message);
+    return;
+  }
+  console.info(message);
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contact-form");
@@ -24,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      await addDoc(collection(window.db, "contactMessages"), {
+      await addDoc(collection(db, "contactMessages"), {
         name,
         phone,
         message,

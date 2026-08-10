@@ -6,13 +6,13 @@
 
   <meta name="viewport"
   content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v11/font/simple-icons.min.css">
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#e84c88">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="icon" href="/favicon.png" sizes="512x512">
+  <link rel="icon" href="/logo.png" sizes="512x512">
 <link rel="apple-touch-icon" href="/logo.png">
 <script type="application/ld+json">
 {
@@ -27,7 +27,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="page-index">
 
 
 <div id="announcement-bar" class="top-announcement">
@@ -51,12 +51,16 @@
   </a>
 
   <div class="brand-text">
-    <h1 class="brand-title">
+    <h1 class="brand-title" aria-label="Kandy's Treats">
       <span class="brand-top">KANDY’S</span>
-      <span class="brand-bottom">TREATS</span>
+      <span class="brand-bottom" aria-hidden="true">Treats</span>
     </h1>
   </div>
 </header>
+
+    <p class="landing-subtitle fade-in-up delay-1">
+      Fresh Nigerian comfort food, quick bites, chilled drinks, and late-night favourites delivered around EKSU.
+    </p>
 
     <!-- Hero Image -->
     <section class="section fade-in-up delay-1">
@@ -72,6 +76,11 @@
       <a href="home.html" class="btn btn-primary btn-block btn-hero">
         Start Order
       </a>
+      <div class="landing-trust">
+        <span>Open daily</span>
+        <span>Pickup available</span>
+        <span>Wallet-ready checkout</span>
+      </div>
     </section>
 
     <!-- About -->
@@ -302,7 +311,7 @@
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 
-    <script r"js/js/app.js"js" type="module"></script>
+    <script src="app.js" type="module"></script>
   </div>
 </body>
 </html>
